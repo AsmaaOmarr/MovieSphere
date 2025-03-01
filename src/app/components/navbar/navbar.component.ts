@@ -9,7 +9,7 @@ import { HoverColorDirective } from '../../directives/hover-color.directive';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  bgColor: string = '#141414'; // Dark Background
+  bgColor: string = APP_COLORS.primary; // Dark Background
 
   onMouseOver(event: any) {
     console.log(event);
