@@ -1,5 +1,5 @@
 <div
-  class="d-flex flex-column justify-content-between flex-shrink-0 p-3 sidebar "
+  class="d-flex flex-column justify-content-between flex-shrink-0 p-3 sidebar"
   style="width: 220px; height: 92vh"
   [ngStyle]="{ 'background-color': bgColor }"
 >
@@ -9,19 +9,43 @@
       <p class="nav-link text-secondary fs-6 my-0">MENU</p>
     </li>
     <li class="nav-item">
-      <a routerLink="discovery" class="nav-link text-white" appActiveBorder>
+      <a
+        routerLink="discovery"
+        class="nav-link text-white"
+        [ngStyle]="{
+          'border-left':
+            activeItem === 'discovery' ? '2px solid ' + activeColor : 'none'
+        }"
+        (click)="setActive('discovery')"
+      >
         <i class="bi bi-compass me-2"></i>
         Discovery
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="topRated" class="nav-link text-white" appActiveBorder>
+      <a
+        routerLink="topRated"
+        class="nav-link text-white"
+        [ngStyle]="{
+          'border-left':
+            activeItem === 'topRated' ? '2px solid ' + activeColor : 'none'
+        }"
+        (click)="setActive('topRated')"
+      >
         <i class="bi bi-star me-2"></i>
         Top Rated
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="comingSoon" class="nav-link text-white" appActiveBorder>
+      <a
+        routerLink="comingSoon"
+        class="nav-link text-white"
+        [ngStyle]="{
+          'border-left':
+            activeItem === 'comingSoon' ? '2px solid ' + activeColor : 'none'
+        }"
+        (click)="setActive('comingSoon')"
+      >
         <i class="bi bi-calendar me-2"></i>
         Coming Soon
       </a>

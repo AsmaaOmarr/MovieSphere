@@ -11,4 +11,10 @@ import { RouterModule } from '@angular/router';
 })
 export class SidebarComponent {
   bgColor = APP_COLORS.sideBar;
+  activeColor = APP_COLORS.secondary;
+  activeItem = 'discovery';
+  setActive(item: string) {
+    this.activeItem = item;
+  }
+  
 }
