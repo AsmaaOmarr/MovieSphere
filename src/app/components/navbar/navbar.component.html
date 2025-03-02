@@ -3,16 +3,16 @@
   class="navbar navbar-expand-lg px-4"
   [ngStyle]="{ 'background-color': bgColor }"
 >
-  <a class="navbar-brand text-white fw-bold" href="#">MovieSphere</a>
-
   <button
-    class="navbar-toggler"
+    class="navbar-toggler bg-light"
     type="button"
     data-bs-toggle="collapse"
     data-bs-target="#navbarNav"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
+  
+  <a class="navbar-brand text-white fw-bold" href="#">MovieSphere</a>
 
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -48,7 +48,15 @@
     </div>
 
     <!-- User Profile Dropdown -->
-    <div class="dropdown">
+
+    <img
+      src="https://github.com/mdo.png"
+      alt="User"
+      width="34"
+      height="34"
+      class="rounded-circle me-2"
+    />
+    <!-- <div class="dropdown">
       <button class="btn" type="button" data-bs-toggle="dropdown">
         <i class="bi bi-person-circle fs-5 text-white" appHoverColor></i>
       </button>
@@ -61,6 +69,6 @@
           ></a>
         </li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </nav>
