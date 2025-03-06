@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-sidebar',
   imports: [CommonModule, RouterModule],
   templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
   bgColor = APP_COLORS.sideBar;
