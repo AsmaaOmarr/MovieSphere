@@ -1,6 +1,6 @@
 <!--  -->
 <nav
-  class="navbar navbar-expand-lg px-4"
+  class="navbar navbar-expand-lg px-4 py-2 fixed-top"
   [ngStyle]="{ 'background-color': bgColor }"
 >
   <button
@@ -11,8 +11,10 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
-  
-  <a class="navbar-brand text-white fw-bold" href="#">MovieSphere</a>
+
+  <a class="navbar-brand text-white fw-bold" href="#"
+    ><h4 class="logo logoColor">MovieSphere 🍿</h4></a
+  >
 
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -34,17 +36,12 @@
 
   <!-- Right Side Icons & Button -->
   <div class="d-flex align-items-center">
-    <!-- Search Icon -->
-    <div class="container-fluid">
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-light" type="submit">Search</button>
-      </form>
+    <div class="me-4">
+      <app-button
+        name="Subscribe"
+        borderRadius="40px"
+        width="8vw"
+      ></app-button>
     </div>
 
     <!-- User Profile Dropdown -->
