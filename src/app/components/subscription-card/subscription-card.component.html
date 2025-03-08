@@ -1,0 +1,40 @@
+<div class="card shadow-lg h-100" [ngStyle]="{'background-color': isHighlighted ? secondary : gray}">
+    <div class="card-body text-start text-white">
+        <div class="p-4">
+            <h3 class="fs-4">{{ title }}</h3>
+            <div class="display-4 fw-bold">
+                {{ price }}
+                <span class="fs-6">/Month</span>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <hr class="mb-4">
+            <ul class="list-unstyled">
+                <li class="mb-3 d-flex align-items-center" *ngFor="let feature of features">
+                    <span class="icon-wrapper me-2" 
+                           [style.background-color]="feature.valid ? (isHighlighted ? '#BC55EC' : '#353139') : '#201C25'">
+                        <i class="bi bi-check2"
+                           [style.color]="isHighlighted ? 'white' : 'green'">
+                        </i>
+                    </span>
+                    <span class="feature-text"
+                          [style.opacity]="feature.valid ? 1 : 0.2"
+                        >
+                        {{ feature.text }}
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="px-4 bg-transparent border-0 text-center pb-4">
+            <button class="btn p-3 fw-bold rounded-pill w-100" 
+                    [style.color]="isHighlighted ? 'white' : secondary"
+                    [class.btn-lg]="isHighlighted"
+                    [style.--hover-bg]="isHighlighted ? 'white' : secondary"
+                    [style.--hover-color]="isHighlighted ? secondary : 'white'">
+                Get Started
+            </button>
+        </div>
+    </div>
+</div>
