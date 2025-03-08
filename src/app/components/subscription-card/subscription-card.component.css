@@ -1,0 +1,42 @@
+.card {
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.list-unstyled li {
+  padding: 4px 0;
+}
+
+.bi-check2-circle {
+  font-size: 1.2rem;
+}
+
+.btn {
+  border: 2px solid;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--hover-bg) !important;
+  color: var(--hover-color) !important;
+  border-color: var(--hover-bg) !important;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.bi-check2 {
+  font-size: 1.2rem;
+}
