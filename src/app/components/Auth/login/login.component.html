@@ -1,0 +1,32 @@
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-4   border-0 " style="width: 400px; border-radius: 12px; background-color: #221B2F; font-size: small;">
+<h5 class="text-center mb-4 text-light">Login</h5>
+      
+<form>
+  <!-- Full Name -->
+  <div class="mb-3">
+    <label class="form-label text-secondary">Full Name</label>
+    <input type="text" class="form-control text-light border-0 rounded-4" placeholder="Enter your name">
+  </div>
+
+  <!-- Password -->
+  <div class="mb-3 position-relative">
+    <label class="form-label text-secondary">Password</label>
+    <input [type]="showPassword ? 'text' : 'password'" class="form-control  border-0 rounded-4"
+      placeholder="Enter your password" #passwordInput>
+      <i [class]="showPassword ? 'bi bi-eye-fill':'bi bi-eye-slash-fill'"
+      class="me-3 translate-middle-y text-light"
+      (click)="togglePassword()"
+      style="cursor: pointer; position: absolute; top: 48px; right: -5px;"></i>
+  </div>
+
+  
+
+  <!-- Register Button -->
+  <button class="btn btn-lg w-100 text-white rounded-4" style="background-color: #7A28A7; font-size: 15px;">Login</button>
+
+ 
+</form>
+</div>
+</div>
