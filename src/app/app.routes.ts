@@ -15,7 +15,9 @@ export const routes: Routes = [
     path: '',
     component: StartComponent, 
     children: [
-      { path: '', component: RegisterComponent }, 
+      { path: '',  redirectTo: 'register', pathMatch: 'full' }, 
+      { path: 'register', component: RegisterComponent }, 
+
       { path: 'login', component: LoginComponent } 
     ],
   },
@@ -29,6 +31,10 @@ export const routes: Routes = [
         component: ComingSoonComponent,
         title: 'coming soon',
       },
+      {path : 'subscribe', component: SubscriptionDetailsScreenComponent, title: 'subscribe Details' },
+      { path: 'payment', component: PaymentScreenComponent, title: 'Payment' },
+      { path: 'success', component: PaypalSuccessScreenComponent, title: 'Payment Sucess' },
+
     ],
   },
 ];

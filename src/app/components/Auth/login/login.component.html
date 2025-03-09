@@ -35,7 +35,10 @@
   </div>
   <!-- Register Button -->
   <button (click)="login()" class="btn btn-lg w-100 text-white rounded-4" style="background-color: #7A28A7; font-size: 15px;" [disabled]="loginFormValidation.invalid">Login</button>
-
+  <p class="text-center mt-3 text-light">
+    Don't have an account? 
+    <a routerLink="/register" class="text-decoration-none fw-bold" style="color: #a033ff;">Register</a>
+  </p>
  
   
 </form>
