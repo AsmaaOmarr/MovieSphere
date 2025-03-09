@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paypal-button',
@@ -12,6 +13,9 @@ export class PaypalButtonComponent implements OnInit {
   
   @Input() amount: string = '0.00';
   @Input() currency: string = 'USD';
+
+      constructor(private router: Router) {}
+  
 
   ngOnInit(): void {
     if (parseFloat(this.amount) <= 0) {
@@ -44,7 +48,7 @@ export class PaypalButtonComponent implements OnInit {
         onApprove: (data: any, actions: any) => {
           return actions.order.capture().then((details: any) => {
             console.log('Transaction completed by ' + details.payer.name.given_name);
-            // navigate to success page
+            this.router.navigate(['/home/success']);
           });
         },
         onError: (err: any) => {
