@@ -29,6 +29,7 @@
 
         <div class="px-4 bg-transparent border-0 text-center pb-4">
             <button class="btn p-3 fw-bold rounded-pill w-100" 
+            (click)="navigateToPaymentScreen()"
                     [style.color]="isHighlighted ? 'white' : secondary"
                     [class.btn-lg]="isHighlighted"
                     [style.--hover-bg]="isHighlighted ? 'white' : secondary"

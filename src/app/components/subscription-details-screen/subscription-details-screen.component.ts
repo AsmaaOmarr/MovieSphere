@@ -36,7 +36,7 @@ export class SubscriptionDetailsScreenComponent {
     },
     {
       title: 'Monthly Subscription',
-      price: '$4.99',
+      price: '$9.99',
       features: [
         { text: 'Streaming in high quality', valid: true },
         { text: 'With the best audio quality', valid: true },
