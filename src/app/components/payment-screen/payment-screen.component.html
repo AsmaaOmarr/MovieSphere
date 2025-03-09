@@ -77,6 +77,14 @@
             [ngStyle]="{'background-color': secondary, 'color': 'white'}">
             Subscripe
           </button>
+
+          <ng-container *ngIf="subscriptionPlan">
+            <app-paypal-button 
+              [amount]="subscriptionPlan.billedNow.slice(1)" 
+              currency="USD">
+            </app-paypal-button>
+          </ng-container>
+          
         </div>
       </div>
     </div>

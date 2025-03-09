@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { APP_COLORS } from '../../constants';
 import { CustomTextFieldComponent } from '../custom-text-field/custom-text-field.component';
+import { PaypalButtonComponent } from "../paypal-button/paypal-button.component";
 
 @Component({
   selector: 'app-payment-screen',
   templateUrl: './payment-screen.component.html',
   styleUrls: ['./payment-screen.component.css'],
   standalone: true,
-  imports: [CustomTextFieldComponent,ReactiveFormsModule,CommonModule],
+  imports: [CustomTextFieldComponent, ReactiveFormsModule, CommonModule, PaypalButtonComponent],
 })
 export class PaymentScreenComponent implements OnInit {
   paymentForm: FormGroup;
