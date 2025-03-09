@@ -63,10 +63,17 @@
           <hr class="bg-secondary">
           <h5 class="my-4">
             Billed Now
-            <span class="float-end">{{subscriptionPlan?.billedNow}}</span>
+            <span class="float-end fw-bold"  
+              [ngStyle]="{'color': secondary}"
+            >{{subscriptionPlan?.billedNow}}</span>
           </h5>
 
-          <button class="btn p-3 fw-bold rounded-pill w-100"
+          <span class="my-4" style="color : #94A3B8;">
+            You will be charged $5 every yearly thereafter while the 
+            subscriton is active. Cancel any time.
+          </span>
+
+          <button class="btn p-3 fw-bold rounded-pill w-100 my-4"
             [ngStyle]="{'background-color': secondary, 'color': 'white'}">
             Subscripe
           </button>
