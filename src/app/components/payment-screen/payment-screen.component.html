@@ -1,0 +1,92 @@
+<div class="container-fluid" style="min-height: 100vh;">
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <div class="row g-0" style="min-height: 100vh;">
+
+      <div class="col-12 col-lg-7 p-5">
+        <h2 class="text-white mb-5">Payment Method</h2>
+
+        <div class="rounded-pill p-3 purple-border">
+          <input type="radio" class="purple-radio mx-2" id="paypal" name="paymentMethod" checked>
+          <label class="text-white fst-italic fw-bold mx-2" for="paypal">
+            <img src="assets/paypal-logo.png" width="30">
+            PayPal
+          </label>
+        </div>
+
+        <div class="text-white my-4">Or checkout using a credit card</div>
+
+        <app-custom-text-field label="Cardholder Name" placeholder="" formControlName="cardholderName"
+          validationMessage="Cardholder name required">
+        </app-custom-text-field>
+
+        <div class="row">
+          <div class="col-md-6">
+            <app-custom-text-field label="Card Number" placeholder="Ex: 3111 1111 1111 1111" type="text"
+              formControlName="cardNumber" [allowOnlyNumbers]="true" [maxLength]="16"
+              validationMessage="Valid card number required">
+            </app-custom-text-field>
+          </div>
+          <div class="col-md-3">
+            <app-custom-text-field label="Expiration Date" placeholder="MM/YY" type="text" [maxLength]="5"
+              formControlName="expirationDate" validationMessage="Expiration date required">
+            </app-custom-text-field>
+          </div>
+          <div class="col-md-3">
+            <app-custom-text-field label="CVV" placeholder="123" type="text" formControlName="CVV"
+              [allowOnlyNumbers]="true" [maxLength]="3" validationMessage="Security code required">
+            </app-custom-text-field>
+          </div>
+        </div>
+
+        <div class="col-md-4 px-0">
+          <app-custom-text-field label="Postal Code" placeholder="Postal or ZIP code" type="text" [maxLength]="10"
+            [allowOnlyNumbers]="true" formControlName="postalCode" validationMessage="Postal code required">
+          </app-custom-text-field>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5 p-5 text-white d-flex flex-column"
+        style="background-color: #1A161F; min-height: 100vh;">
+        <div>
+          <h5 class="my-4">
+            Subtotal
+            <span class="float-end">{{subscriptionPlan?.subtotal}}</span>
+          </h5>
+          <p class="my-4">
+            Plan type
+            <span class="float-end">{{subscriptionPlan?.planType}}</span>
+          </p>
+          <p class="my-4">
+            {{subscriptionPlan?.planType}} discount
+            <span class="float-end">{{subscriptionPlan?.discount}}</span>
+          </p>
+          <hr class="bg-secondary">
+          <h5 class="my-4">
+            Billed Now
+            <span class="float-end fw-bold"  
+              [ngStyle]="{'color': secondary}"
+            >{{subscriptionPlan?.billedNow}}</span>
+          </h5>
+
+          <span class="my-4" style="color : #94A3B8;">
+            You will be charged $5 every yearly thereafter while the 
+            subscriton is active. Cancel any time.
+          </span>
+
+          <button class="btn p-3 fw-bold rounded-pill w-100 my-4"
+            [ngStyle]="{'background-color': secondary, 'color': 'white'}">
+            Subscripe
+          </button>
+
+          <ng-container *ngIf="subscriptionPlan">
+            <app-paypal-button 
+              [amount]="subscriptionPlan.billedNow.slice(1)" 
+              currency="USD">
+            </app-paypal-button>
+          </ng-container>
+          
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

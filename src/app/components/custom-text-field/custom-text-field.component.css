@@ -1,0 +1,27 @@
+.custom-input {
+  background: #1A161F;
+  border: 1px solid #404040;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.form-label {
+  color: white !important;
+  margin-left: 15px;
+}
+
+.custom-input:focus {
+  border-color: #B43FEB;
+  border-radius: 25px; 
+}
+
+.custom-input.is-invalid {
+  border-color: #dc3545;
+  border-radius: 25px;
+}

@@ -1,0 +1,19 @@
+<div class="form-group mb-4">
+  <label class="form-label">{{ label }}</label>
+  <input 
+    [type]="type" 
+    class="form-control custom-input"
+    [placeholder]="placeholder"
+    [value]="value"
+    (input)="onInput($event)"
+    (keypress)="onKeyPress($event)"
+    (blur)="onTouched()"
+    [attr.maxlength]="maxLength ? maxLength : null"
+    [pattern]="pattern"
+    [class.is-invalid]="ngControl?.invalid && ngControl?.touched"
+  >
+  <div *ngIf="ngControl?.invalid && ngControl?.touched" class="invalid-feedback">
+    {{ validationMessage }}
+  </div>
+</div>
+

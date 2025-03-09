@@ -1,8 +1,11 @@
 import { Routes } from '@angular/router';
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { DiscoveryComponent } from './components/discovery/discovery.component';
 import { HomeComponent } from './components/home/home.component';
+import { PaymentScreenComponent } from './components/payment-screen/payment-screen.component';
+import { PaypalSuccessScreenComponent } from './components/paypal-success-screen/paypal-success-screen.component';
+import { SubscriptionDetailsScreenComponent } from './components/subscription-details-screen/subscription-details-screen.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
-import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { StartComponent } from './components/Auth/start/start.component';
 import { RegisterComponent } from './components/Auth/register/register.component';
 import { LoginComponent } from './components/Auth/login/login.component';
@@ -10,10 +13,10 @@ import { LoginComponent } from './components/Auth/login/login.component';
 export const routes: Routes = [
   {
     path: '',
-    component: StartComponent, // الصفحة المقسومة نصين
+    component: StartComponent, 
     children: [
-      { path: '', component: RegisterComponent }, // عرض الريجستر افتراضيًا
-      { path: 'login', component: LoginComponent } // عند الذهاب إلى login، يتم عرض اللوجين فقط على اليمين
+      { path: '', component: RegisterComponent }, 
+      { path: 'login', component: LoginComponent } 
     ],
   },
   {path: 'home',component: HomeComponent,title: 'home',
@@ -21,7 +24,11 @@ export const routes: Routes = [
       { path: '', redirectTo: 'discovery', pathMatch: 'full' },
       { path: 'discovery', component: DiscoveryComponent, title: 'discovery' },
       { path: 'topRated', component: TopRatedComponent, title: 'top rated' },
-      {path: 'comingSoon',component: ComingSoonComponent,title: 'coming soon',},
+      {
+        path: 'comingSoon',
+        component: ComingSoonComponent,
+        title: 'coming soon',
+      },
     ],
   },
 ];
