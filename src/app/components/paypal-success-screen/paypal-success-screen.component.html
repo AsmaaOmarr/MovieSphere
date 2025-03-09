@@ -1,0 +1,23 @@
+<div class="container text-center py-5 text-white"
+    style="width: 50%; height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="assets/success.png" class="img-fluid" alt="Success" style="width: 100px;">
+        </div>
+    </div>
+    <div class="col-md-12 px-5">
+        <h1>Payment Successful</h1>
+        <p class="my-4">Thank you for your payment. Your transaction has been completed. You may log into your account
+            at <a href="https://www.paypal.com">www.paypal.com</a> to view
+            details of this transaction.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <button class="btn p-3 fw-bold rounded-pill btn-custom w-25
+            " [ngClass]="{'btn-custom': true,}"
+            (click)="navigateToHome()">
+                Start Watching
+            </button>
+        </div>
+    </div>
