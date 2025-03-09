@@ -1,0 +1,9 @@
+.purple-border {
+  border: 2px solid #B43FEB; 
+  background-color: #1A161F;
+}
+
+.purple-radio {
+  accent-color: #B43FEB;
+  transform: scale(2);
+}
