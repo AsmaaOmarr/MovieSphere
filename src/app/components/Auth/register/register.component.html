@@ -4,43 +4,57 @@
           
           <h5 class="text-center mb-4 text-light">Register</h5>
       
-          <form>
+          <form [formGroup]="registerFormValidation">
             <!-- Full Name -->
             <div class="mb-3">
               <label class="form-label text-secondary">Full Name</label>
-              <input type="text" class="form-control text-light border-0 rounded-4" placeholder="Enter your name">
+              <input [(ngModel)]="user.username" name="username" formControlName="name"  type="text" class="form-control text-light border-0 rounded-4" placeholder="Enter your name">
+              <div *ngIf="name?.invalid && name?.touched" class="invalid-feedback d-block">
+                Name is required and must be more than 3 characters.
+              </div>
             </div>
       
             <!-- Email Address -->
             <div class="mb-3">
               <label class="form-label text-secondary">Email Address</label>
-              <input type="email" class="form-control text-light border-0 rounded-4" placeholder="Enter your email address">
+              <input  [(ngModel)]="user.email" name="email" formControlName="email" type="email" class="form-control text-light border-0 rounded-4" placeholder="Enter your email address">
+              <div *ngIf="email?.invalid && email?.touched" class="invalid-feedback d-block">
+                <div>Please provide a valid email</div>
+              </div>
             </div>
       
             <!-- Password -->
             <div class="mb-3 position-relative">
               <label class="form-label text-secondary">Password</label>
-              <input [type]="showPassword ? 'text' : 'password'" class="form-control  border-0 rounded-4"
+              <input [(ngModel)]="user.password" name="password" formControlName="password" [type]="showPassword ? 'text' : 'password'" class="form-control  border-0 rounded-4"
                 placeholder="Enter your password" #passwordInput>
-                <i [class]="showPassword ? 'bi bi-eye-fill':'bi bi-eye-slash-fill'"
-                class="me-3 translate-middle-y text-light"
+                <i [class]="showPassword ? 'bi bi-eye':'bi bi-eye-slash'"
+                class="me-3 translate-middle-y text-light "
                 (click)="togglePassword()"
-                style="cursor: pointer; position: absolute; top: 48px; right: -5px;"></i>
+                style="cursor: pointer; position: absolute; top: 48px; right: -5px; ;"></i>
+
+                <div *ngIf="password?.invalid && password?.touched" class="invalid-feedback d-block">
+                  <div >Password must be at least 6 characters long.</div>
+                </div>
             </div>
       
             <!-- Confirm Password -->
             <div class="mb-3 position-relative">
               <label class="form-label text-secondary">Confirm Password</label>
-              <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control border-0 rounded-4"
+              <input  formControlName="confirm" name="confirm" [type]="showConfirmPassword ? 'text' : 'password'" class="form-control border-0 rounded-4"
                 placeholder="Enter your password">
-                <i [class]="showConfirmPassword ? 'bi bi-eye-fill':'bi bi-eye-slash-fill' "
+                <i [class]="showConfirmPassword ? 'bi bi-eye':'bi bi-eye-slash' "
                 class=" me-3 translate-middle-y text-light"
                 (click)="toggleConfirmPassword()"
                 style="cursor: pointer; position: absolute; top: 48px; right: -5px;"></i>
+
+                <small class="text-danger" *ngIf="confirm?.touched && confirm?.value !== password?.value">
+                  Passwords do not match!
+                </small>
             </div>
       
             <!-- Register Button -->
-            <button routerLink="home" class="btn btn-lg w-100 text-white rounded-4" style="background-color: #7A28A7; font-size: 15px;">Register</button>
+            <button (click)="register()" class="btn btn-lg w-100 text-white rounded-4" style="background-color: #7A28A7; font-size: 15px;"  [disabled]="registerFormValidation.invalid||confirm?.value !== password?.value">Register</button>
       
             <!-- Login Link -->
             <p class="text-center mt-3 text-light">

@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "c861",
+      "username": "arwa",
+      "email": "aymanarwa05@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "40cf",
+      "username": "arww",
+      "email": "aymanarwa05@gm",
+      "password": "123456"
+    }
+  ]
+}
