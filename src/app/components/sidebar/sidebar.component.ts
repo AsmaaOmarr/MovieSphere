@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { APP_COLORS } from '../../constants';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,11 +11,16 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+    constructor(private authService: AuthService) {}
+  
   bgColor = APP_COLORS.sideBar;
   activeColor = APP_COLORS.secondary;
   activeItem = 'discovery';
   setActive(item: string) {
     this.activeItem = item;
+  }
+  logout(){
+this.authService.logout()
   }
 
 }
