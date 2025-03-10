@@ -6,6 +6,10 @@ import { PaymentScreenComponent } from './components/payment-screen/payment-scre
 import { PaypalSuccessScreenComponent } from './components/paypal-success-screen/paypal-success-screen.component';
 import { SubscriptionDetailsScreenComponent } from './components/subscription-details-screen/subscription-details-screen.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
+import { AboutComponent } from './components/about/about/about.component';
+import { LoginComponent } from './components/Auth/login/login.component';
+import { RegisterComponent } from './components/Auth/register/register.component';
+import { StartComponent } from './components/Auth/start/start.component';
 
 export const routes: Routes = [
   {
@@ -33,5 +37,6 @@ export const routes: Routes = [
       { path: 'success', component: PaypalSuccessScreenComponent, title: 'Payment Sucess' },
 
     ],
-  },{ path:'about',component:AboutComponent , title: 'About Us'}
+  },
+  { path:'about',component:AboutComponent , title: 'About Us'}
 ];
