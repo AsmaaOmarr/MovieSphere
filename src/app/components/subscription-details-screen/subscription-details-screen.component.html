@@ -1,26 +1,47 @@
-<div class="container-fluid py-5">
-    <div class="text-center text-white">
-        <button class="btn p-3 fw-bold rounded-pill" [ngStyle]="{'background-color': gray, 'color': yellow}">
-            Access Premium
-        </button>
+<div class="container-fluid py-2">
+  <!-- alert -->
+  <div
+    *ngIf="showAlert"
+    class="alert alert-warning alert-dismissible fade show position-fixed top-3 start-50 translate-middle-x shadow"
+    style="z-index: 1050; width: 80%; text-align: center"
+    role="alert"
+  >
+    <strong>⚠ Access Denied!</strong> You need to subscribe to view this movie.
+    <button
+      type="button"
+      class="btn-close"
+      (click)="showAlert = false"
+      aria-label="Close"
+    ></button>
+  </div>
+  <!-- end of alert -->
+  <div class="text-center text-white">
+    <button
+      class="btn p-3 fw-bold rounded-pill"
+      [ngStyle]="{ 'background-color': gray, color: yellow }"
+    >
+      Access Premium
+    </button>
 
-        <h2 class="display-5 fw-bold mb-4">
-            It's easy to get started
-        </h2>
+    <h3 class="display-5 fw-bold mb-4">It's easy to get started</h3>
 
-        <p class="lead mb-3" style="color: #94A3B8;">
-            Choose the best plan to enjoy the best<br>
-            movies and series
-        </p>
-        
-        <div class="container">
-            <div class="row flex-nowrap overflow-auto"> 
-              <div class="col-4" *ngFor="let plan of plans">
-                <app-subscription-card [title]="plan.title" [price]="plan.price" 
-                  [features]="plan.features" [isHighlighted]="plan.highlighted">
-                </app-subscription-card>
-              </div>
-            </div>
-          </div>
+    <p class="lead mb-3" style="color: #94a3b8">
+      Choose the best plan to enjoy the best<br />
+      movies and series
+    </p>
+
+    <div class="container">
+      <div class="row flex-nowrap overflow-auto">
+        <div class="col-4" *ngFor="let plan of plans">
+          <app-subscription-card
+            [title]="plan.title"
+            [price]="plan.price"
+            [features]="plan.features"
+            [isHighlighted]="plan.highlighted"
+          >
+          </app-subscription-card>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
