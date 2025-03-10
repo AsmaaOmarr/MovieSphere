@@ -66,6 +66,7 @@ export class RegisterComponent {
   register() {
     this.authService.register(this.user).subscribe(
       () => {
+         localStorage.setItem('loggedInUser', JSON.stringify(this.user));
         this.router.navigate(['/home']);
       },
       () => alert('Registration failed!')
