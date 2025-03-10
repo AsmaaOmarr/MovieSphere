@@ -9,9 +9,11 @@ import { RouterModule } from '@angular/router';
   styleUrl: './movie-card.component.css',
 })
 export class MovieCardComponent {
-  @Input() id!: number;
-  @Input() title!: string;
-  @Input() posterPath!: string;
-
+  @Input() movie!: any;
   imgPath: string = 'https://image.tmdb.org/t/p/w500/';
+
+  // Getter function to format rating
+  getFormattedRating(rating: number): string {
+    return rating ? rating.toFixed(1) : 'N/A';
+  }
 }

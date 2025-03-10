@@ -4,42 +4,36 @@
   placeholder="Search"
   aria-label="Search"
 />
+<div class="mx-2 my-5 d-flex flex-wrap justify-content-evenly">
+  @for (movie of movies; track $index) {
+  <app-movie-card [movie]="movie"></app-movie-card>
+  }
+</div>
 
-<div class="mx-5 my-3 d-flex flex-wrap justify-content-evenly">
-  <app-movie-card
-    [id]="movie.id"
-    [title]="movie.title"
-    [posterPath]="movie.poster_path"
-  ></app-movie-card>
-  <app-movie-card
-    [id]="movie.id"
-    [title]="movie.title"
-    [posterPath]="movie.poster_path"
-  ></app-movie-card>
-  <app-movie-card
-    [id]="movie.id"
-    [title]="movie.title"
-    [posterPath]="movie.poster_path"
-  ></app-movie-card>
-  <app-movie-card
-    [id]="movie.id"
-    [title]="movie.title"
-    [posterPath]="movie.poster_path"
-  ></app-movie-card>
-  <app-movie-card
-    [id]="movie.id"
-    [title]="movie.title"
-    [posterPath]="movie.poster_path"
-  ></app-movie-card>
-  <app-movie-card
-    [id]="movie.id"
-    [title]="movie.title"
-    [posterPath]="movie.poster_path"
-  ></app-movie-card>
-  <app-movie-card
-    [id]="movie.id"
-    [title]="movie.title"
-    [posterPath]="movie.poster_path"
-  ></app-movie-card
-  >s
+<div class="w-25 mx-auto ps-5">
+  <ul class="pagination">
+    <li class="page-item">
+      <button
+        class="page-link"
+        (click)="prevPage()"
+        [disabled]="currentPage === 1"
+      >
+        <span>&laquo;</span>
+      </button>
+    </li>
+    <li class="page-item">
+      <button class="page-link" (click)="changePage(1)">1</button>
+    </li>
+    <li class="page-item">
+      <button class="page-link" (click)="changePage(2)">2</button>
+    </li>
+    <li class="page-item">
+      <button class="page-link" (click)="changePage(3)">3</button>
+    </li>
+    <li class="page-item">
+      <button class="page-link" (click)="nextPage()">
+        <span>&raquo;</span>
+      </button>
+    </li>
+  </ul>
 </div>
