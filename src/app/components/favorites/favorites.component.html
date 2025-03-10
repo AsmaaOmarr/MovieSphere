@@ -1,0 +1,5 @@
+<div class="mx-2 my-5 d-flex flex-wrap justify-content-evenly">
+  @for (movie of favoriteMovies; track $index) {
+  <app-movie-card [movie]="movie"></app-movie-card>
+  }
+</div>

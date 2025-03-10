@@ -33,6 +33,19 @@ export class DiscoveryComponent implements OnInit {
     });
   }
 
+  searchMovie(e: any): void {
+    const query = e.target.value;
+    if (!query.trim()) {
+      this.fetchMovies();
+      return;
+    }
+    this.movieService.searchMovie(query).subscribe({
+      next: (movies) => {
+        this.movies = movies.results;
+      },
+      error: (err) => console.log(err),
+    });
+  }
   nextPage(): void {
     this.currentPage++;
     this.fetchMovies();
@@ -48,5 +61,9 @@ export class DiscoveryComponent implements OnInit {
     console.log(num);
     this.currentPage = num;
     this.fetchMovies();
+  }
+
+  isFavorite(id: number): boolean {
+    return this.movieService.favoriteMoviesIds.includes(id);
   }
 }

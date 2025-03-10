@@ -12,7 +12,10 @@
 </a> -->
 
 <div class="card text-light mb-4">
-  <i class="bi bi-heart-fill heart-icon"></i>
+  <i
+    class="bi bi-heart-fill heart-icon"
+    [ngClass]="isFavorite?'fav-movie':'none'"
+  ></i>
   <img
     [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
     class="card-img-top rounded-4"

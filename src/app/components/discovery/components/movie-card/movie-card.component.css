@@ -1,7 +1,7 @@
 .card {
   background-color: transparent !important;
   border: none !important;
-  width: 15rem;
+  width: 14.6rem;
   height: 15rem;
 }
 .card img {
@@ -10,7 +10,7 @@
 }
 .card-des,
 .card-des2 {
-  font-size: 0.85rem !important;
+  font-size: 0.82rem !important;
 }
 .card-des2 {
   color: gray;
@@ -28,6 +28,10 @@
 
 .heart-icon:hover {
   color: crimson;
+}
+
+.fav-movie {
+  color: crimson !important;
 }
 
 @keyframes cardAnimation {

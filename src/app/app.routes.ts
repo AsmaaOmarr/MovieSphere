@@ -10,19 +10,23 @@ import { AboutComponent } from './components/about/about/about.component';
 import { LoginComponent } from './components/Auth/login/login.component';
 import { RegisterComponent } from './components/Auth/register/register.component';
 import { StartComponent } from './components/Auth/start/start.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: StartComponent,
     children: [
-      { path: '',  redirectTo: 'register', pathMatch: 'full' },
+      { path: '', redirectTo: 'register', pathMatch: 'full' },
       { path: 'register', component: RegisterComponent },
 
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
     ],
   },
-  {path: 'home',component: HomeComponent,title: 'home',
+  {
+    path: 'home',
+    component: HomeComponent,
+    title: 'home',
     children: [
       { path: '', redirectTo: 'discovery', pathMatch: 'full' },
       { path: 'discovery', component: DiscoveryComponent, title: 'discovery' },
@@ -32,11 +36,19 @@ export const routes: Routes = [
         component: ComingSoonComponent,
         title: 'coming soon',
       },
-      {path : 'subscribe', component: SubscriptionDetailsScreenComponent, title: 'subscribe Details' },
+      { path: 'favorites', component: FavoritesComponent, title: 'favorites' },
+      {
+        path: 'subscribe',
+        component: SubscriptionDetailsScreenComponent,
+        title: 'subscribe Details',
+      },
       { path: 'payment', component: PaymentScreenComponent, title: 'Payment' },
-      { path: 'success', component: PaypalSuccessScreenComponent, title: 'Payment Success' },
-
+      {
+        path: 'success',
+        component: PaypalSuccessScreenComponent,
+        title: 'Payment Success',
+      },
     ],
   },
-  { path:'about',component:AboutComponent , title: 'About Us'}
+  { path: 'about', component: AboutComponent, title: 'About Us' },
 ];

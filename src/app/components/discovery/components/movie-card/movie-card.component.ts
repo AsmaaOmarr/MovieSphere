@@ -1,6 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { OnSameUrlNavigation, RouterModule } from '@angular/router';
+import { MovieService } from '../../../../services/movie.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -8,11 +15,20 @@ import { RouterModule } from '@angular/router';
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.css',
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit {
   @Input() movie!: any;
   imgPath: string = 'https://image.tmdb.org/t/p/w500/';
+  @Input() isFavorite: boolean = false;
 
-  // Getter function to format rating
+  constructor(private movieService: MovieService) {}
+
+  ngOnInit(): void {
+    // if (this.movie) {
+    //   this.isFavorite = this.isFavorite =
+    //     this.movieService.favoriteMoviesIds.includes(this.movie.id);
+    // }
+  }
+
   getFormattedRating(rating: number): string {
     return rating ? rating.toFixed(1) : 'N/A';
   }

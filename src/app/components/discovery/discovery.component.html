@@ -1,15 +1,26 @@
-<input
-  class="form-control mt-4 mx-auto rounded-5 w-50"
-  type="search"
-  placeholder="Search"
-  aria-label="Search"
-/>
+<!-- search bar -->
+<div class="position-relative w-50 mx-auto mt-4">
+  <input
+    class="form-control rounded-5 ps-4"
+    type="search"
+    placeholder="What movie are you looking for? 🎬"
+    (input)="searchMovie($event)"
+  />
+  <i
+    class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3 text-secondary"
+  ></i>
+</div>
+<!-- movies -->
 <div class="mx-2 my-5 d-flex flex-wrap justify-content-evenly">
   @for (movie of movies; track $index) {
-  <app-movie-card [movie]="movie"></app-movie-card>
+  <app-movie-card
+    [movie]="movie"
+    [isFavorite]="isFavorite(movie.id)"
+  ></app-movie-card>
   }
 </div>
 
+<!-- pagination -->
 <div class="w-25 mx-auto ps-5">
   <ul class="pagination">
     <li class="page-item">
