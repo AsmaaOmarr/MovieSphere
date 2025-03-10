@@ -1,0 +1,98 @@
+/* Apply styles to all elements */
+* {
+    color: white;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: #c51404;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    color: yellow;
+}
+
+.main-hero {
+    position: relative;
+    height: 80vh;
+    opacity: 0.8;
+    overflow: hidden;
+    width: 100%; 
+}
+
+.main-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 80%;
+    background-image: url('https://w.wallhaven.cc/full/42/wallhaven-42roy9.jpg');
+    background-size: cover;
+    background-position: 0 0; 
+    filter: blur(0.5px);
+    z-index: -1;
+    animation: slideBackground 10s linear infinite;
+
+}
+
+.mask {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    height: 300px;
+}
+
+.stagger1, .stagger2 {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    transform: translateY(10px);
+}
+
+.stagger1 {
+    animation-delay: 0s;
+}
+
+.stagger2 {
+    animation-delay: 0.3s;
+}
+
+/* Fade-in keyframe animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Infinite sliding background animation */
+@keyframes slideBackground {
+    0% {
+        background-position: 0 0;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+        
+    40% {
+        opacity: 1;
+        background-position: 0% 20%;
+    }
+    100% {
+        background-position: 0% 60%;
+        opacity: 1;
+    }
+}
+
+
+

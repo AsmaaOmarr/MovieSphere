@@ -6,7 +6,8 @@ import { PaymentScreenComponent } from './components/payment-screen/payment-scre
 import { PaypalSuccessScreenComponent } from './components/paypal-success-screen/paypal-success-screen.component';
 import { SubscriptionDetailsScreenComponent } from './components/subscription-details-screen/subscription-details-screen.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
-
+import { HeroSectionComponent } from './components/about/hero-section/hero-section.component';
+import { AboutComponent } from './components/about/about/about.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -27,5 +28,5 @@ export const routes: Routes = [
       { path: 'success', component: PaypalSuccessScreenComponent, title: 'Payment Sucess' },
 
     ],
-  },
+  },{ path:'about',component:AboutComponent , title: 'About Us'}
 ];
