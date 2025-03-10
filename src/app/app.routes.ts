@@ -14,12 +14,12 @@ import { StartComponent } from './components/Auth/start/start.component';
 export const routes: Routes = [
   {
     path: '',
-    component: StartComponent, 
+    component: StartComponent,
     children: [
-      { path: '',  redirectTo: 'register', pathMatch: 'full' }, 
-      { path: 'register', component: RegisterComponent }, 
+      { path: '',  redirectTo: 'register', pathMatch: 'full' },
+      { path: 'register', component: RegisterComponent },
 
-      { path: 'login', component: LoginComponent } 
+      { path: 'login', component: LoginComponent }
     ],
   },
   {path: 'home',component: HomeComponent,title: 'home',
@@ -34,7 +34,7 @@ export const routes: Routes = [
       },
       {path : 'subscribe', component: SubscriptionDetailsScreenComponent, title: 'subscribe Details' },
       { path: 'payment', component: PaymentScreenComponent, title: 'Payment' },
-      { path: 'success', component: PaypalSuccessScreenComponent, title: 'Payment Sucess' },
+      { path: 'success', component: PaypalSuccessScreenComponent, title: 'Payment Success' },
 
     ],
   },

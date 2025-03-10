@@ -12,6 +12,7 @@
       <a
         routerLink="discovery"
         class="nav-link text-white"
+        [ngClass]="activeItem === 'discovery' ? 'nav-color' : 'none'"
         [ngStyle]="{
           'border-left':
             activeItem === 'discovery' ? '2px solid ' + activeColor : 'none'
@@ -26,6 +27,7 @@
       <a
         routerLink="topRated"
         class="nav-link text-white"
+        [ngClass]="activeItem === 'topRated' ? 'nav-color' : 'none'"
         [ngStyle]="{
           'border-left':
             activeItem === 'topRated' ? '2px solid ' + activeColor : 'none'
@@ -40,6 +42,7 @@
       <a
         routerLink="comingSoon"
         class="nav-link text-white"
+        [ngClass]="activeItem === 'comingSoon' ? 'nav-color' : 'none'"
         [ngStyle]="{
           'border-left':
             activeItem === 'comingSoon' ? '2px solid ' + activeColor : 'none'
@@ -71,6 +74,7 @@
           <a
             href="#"
             class="nav-link text-white"
+            [ngClass]="activeItem === 'favorites' ? 'nav-color' : 'none'"
             [ngStyle]="{
               'border-left':
                 activeItem === 'favorites' ? '2px solid ' + activeColor : 'none'
@@ -89,6 +93,7 @@
           <a
             href="#"
             class="nav-link text-white"
+            [ngClass]="activeItem === 'settings' ? 'nav-color' : 'none'"
             [ngStyle]="{
               'border-left':
                 activeItem === 'settings' ? '2px solid ' + activeColor : 'none'
