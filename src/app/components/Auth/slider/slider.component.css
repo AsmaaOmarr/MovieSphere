@@ -1,0 +1,28 @@
+.carousel{
+    padding: 0 !important;
+  }
+  .carousel-item img {
+    object-fit: cover;
+    height: 70vh; /* يجعل الصورة تأخذ ارتفاع الشاشة بالكامل */
+  }
+  
+  .carousel-caption {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    bottom: 0%;
+    text-align: center;
+  }
+  
+  .carousel-indicators button {
+    background-color: #a033ff !important;
+    width: 10px;
+    height: 10px;
+    border-radius: 70%;
+    margin: 5px;
+    border: none;
+  }
+  
+  .carousel-indicators .active {
+    background-color: #fff !important;
+  }

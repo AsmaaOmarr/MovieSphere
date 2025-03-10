@@ -6,13 +6,22 @@ import { PaymentScreenComponent } from './components/payment-screen/payment-scre
 import { PaypalSuccessScreenComponent } from './components/paypal-success-screen/paypal-success-screen.component';
 import { SubscriptionDetailsScreenComponent } from './components/subscription-details-screen/subscription-details-screen.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
+import { StartComponent } from './components/Auth/start/start.component';
+import { RegisterComponent } from './components/Auth/register/register.component';
+import { LoginComponent } from './components/Auth/login/login.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'home',
-    component: HomeComponent,
-    title: 'home',
+    path: '',
+    component: StartComponent, 
+    children: [
+      { path: '',  redirectTo: 'register', pathMatch: 'full' }, 
+      { path: 'register', component: RegisterComponent }, 
+
+      { path: 'login', component: LoginComponent } 
+    ],
+  },
+  {path: 'home',component: HomeComponent,title: 'home',
     children: [
       { path: '', redirectTo: 'discovery', pathMatch: 'full' },
       { path: 'discovery', component: DiscoveryComponent, title: 'discovery' },
