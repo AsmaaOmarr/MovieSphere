@@ -1,5 +1,13 @@
+<h2 class="text-center mb-4 text-secondary fw-bold">Your Favorite Movies 🍿</h2>
 <div class="mx-2 my-5 d-flex flex-wrap justify-content-evenly">
   @for (movie of favoriteMovies; track $index) {
-  <app-movie-card [movie]="movie"></app-movie-card>
+  <app-fav-card
+    [movie]="movie"
+    [isFavorite]="isFavorite(movie.id)"
+  ></app-fav-card>
+  <!-- <app-movie-card
+    [movie]="movie"
+    [isFavorite]="isFavorite(movie.id)"
+  ></app-movie-card> -->
   }
 </div>

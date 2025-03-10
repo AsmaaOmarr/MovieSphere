@@ -30,6 +30,7 @@ export class MovieService {
 
   // Fetch movies
   fetchMovies(page: number = 1): Observable<any> {
+    this.updateFavoriteList();
     return this.http.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${this.apiKey}&&page=${page}`
     );
@@ -59,5 +60,24 @@ export class MovieService {
       this.favoriteMoviesIds = response.results.map((movie: any) => movie.id); // Store IDs
       // console.log(this.favoriteMoviesIds);
     });
+  }
+  toggleFavorite(movieId: number): Observable<any> {
+    const isFavorite = this.favoriteMoviesIds.includes(movieId);
+
+    return this.http.post(
+      `https://api.themoviedb.org/3/account/21849475/favorite?api_key=${this.apiKey}`,
+      {
+        media_type: 'movie',
+        media_id: movieId,
+        favorite: !isFavorite,
+      },
+      {
+        headers: {
+          accept: 'application/json',
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MWMzMzgyZTI1NTExZGU1YzEwYWIzYzhkODQ0ZTgyMyIsIm5iZiI6MTc0MDc0NTcyOS44MDE5OTk4LCJzdWIiOiI2N2MxYWMwMWM5MzI3MTQ5MWYzNWM2ZGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.lwjVio0S9VUL4z0-tvj2fX93T1K67waT6mRiGEy6BuI',
+        },
+      }
+    );
   }
 }

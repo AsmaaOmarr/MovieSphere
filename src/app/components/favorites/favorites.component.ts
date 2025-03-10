@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { CommonModule } from '@angular/common';
-import { MovieCardComponent } from "../discovery/components/movie-card/movie-card.component";
+import { MovieCardComponent } from '../discovery/movie-card/movie-card.component';
+import { FavCardComponent } from "./fav-card/fav-card.component";
 
 @Component({
   selector: 'app-favorites',
-  imports: [CommonModule, MovieCardComponent],
+  imports: [CommonModule, MovieCardComponent, FavCardComponent],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css',
 })
@@ -26,7 +27,7 @@ export class FavoritesComponent implements OnInit {
       error: (error) => console.error('Error:', error),
     });
   }
-  removeFromFavorites(arg0: any) {
-    throw new Error('Method not implemented.');
+  isFavorite(id: number): boolean {
+    return this.movieService.favoriteMoviesIds.includes(id);
   }
 }

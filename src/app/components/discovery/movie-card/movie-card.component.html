@@ -15,6 +15,7 @@
   <i
     class="bi bi-heart-fill heart-icon"
     [ngClass]="isFavorite?'fav-movie':'none'"
+    (click)="onClick()"
   ></i>
   <img
     [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"

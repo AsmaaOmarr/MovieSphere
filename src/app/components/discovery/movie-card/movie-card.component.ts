@@ -1,13 +1,7 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { OnSameUrlNavigation, RouterModule } from '@angular/router';
-import { MovieService } from '../../../../services/movie.service';
+import { MovieService } from '../../../services/movie.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -16,11 +10,14 @@ import { MovieService } from '../../../../services/movie.service';
   styleUrl: './movie-card.component.css',
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movie!: any;
   imgPath: string = 'https://image.tmdb.org/t/p/w500/';
+  @Input() movie!: any;
   @Input() isFavorite: boolean = false;
+  @Output() action = new EventEmitter<void>();
 
-  constructor(private movieService: MovieService) {}
+  onClick() {
+    this.action.emit();
+  }
 
   ngOnInit(): void {
     // if (this.movie) {
