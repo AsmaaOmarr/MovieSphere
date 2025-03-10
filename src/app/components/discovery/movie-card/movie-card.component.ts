@@ -24,7 +24,7 @@ export class MovieCardComponent {
   getFormattedRating(rating: number): string {
     return rating ? rating.toFixed(1) : 'N/A';
   }
-  toggleFavorite(movieId: number) {
+  toggleFavorite(event: Event, movieId: number) {
     this.movieService.toggleFavorite(movieId).subscribe({
       next: (response) => {
         this.isFavorite = !this.isFavorite;
@@ -34,5 +34,7 @@ export class MovieCardComponent {
         console.log(err);
       },
     });
+    event.stopPropagation(); // Stop event from bubbling to parent elements
+    event.preventDefault(); // Prevent the default link behavior
   }
 }

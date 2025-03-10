@@ -16,7 +16,9 @@ export class FavCardComponent {
   imgPath: string = 'https://image.tmdb.org/t/p/w500/';
   @Output() deleteFav = new EventEmitter<void>();
 
-  onClick() {
+  onClick(event: Event) {
     this.deleteFav.emit();
+    event.stopPropagation(); // Stop event from bubbling to parent elements
+    event.preventDefault(); // Prevent the default link behavior
   }
 }

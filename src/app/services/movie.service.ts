@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MovieService {
-  private apiKey = '9813ce01a72ca1bd2ae25f091898b1c7';
+  private apiKey = '81c3382e25511de5c10ab3c8d844e823';
   public genreMap: { [key: number]: string } = {}; // Store genre names
   public favoriteMoviesIds: number[] = [];
 
