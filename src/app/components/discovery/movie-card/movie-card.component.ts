@@ -9,24 +9,25 @@ import { MovieService } from '../../../services/movie.service';
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.css',
 })
-export class MovieCardComponent implements OnInit {
+export class MovieCardComponent {
   imgPath: string = 'https://image.tmdb.org/t/p/w500/';
   @Input() movie!: any;
   @Input() isFavorite: boolean = false;
-  @Output() action = new EventEmitter<void>();
 
-  onClick() {
-    this.action.emit();
-  }
-
-  ngOnInit(): void {
-    // if (this.movie) {
-    //   this.isFavorite = this.isFavorite =
-    //     this.movieService.favoriteMoviesIds.includes(this.movie.id);
-    // }
-  }
+  constructor(private movieService: MovieService) {}
 
   getFormattedRating(rating: number): string {
     return rating ? rating.toFixed(1) : 'N/A';
+  }
+  toggleFavorite(movieId: number) {
+    this.movieService.toggleFavorite(movieId).subscribe({
+      next: (response) => {
+        this.isFavorite = !this.isFavorite;
+        this.movieService.fetchMovies();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

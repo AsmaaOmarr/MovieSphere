@@ -66,14 +66,4 @@ export class DiscoveryComponent implements OnInit {
   isFavorite(id: number): boolean {
     return this.movieService.favoriteMoviesIds.includes(id);
   }
-  toggleFavorite(movieId: number) {
-    this.movieService.toggleFavorite(movieId).subscribe({
-      next: () => {
-        this.movieService.fetchMovies(this.currentPage);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
 }

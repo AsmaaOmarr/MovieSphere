@@ -4,6 +4,7 @@
   <app-fav-card
     [movie]="movie"
     [isFavorite]="isFavorite(movie.id)"
+    (deleteFav)="toggleFavorite(movie.id)"
   ></app-fav-card>
   <!-- <app-movie-card
     [movie]="movie"
