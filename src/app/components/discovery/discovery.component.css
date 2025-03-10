@@ -1,0 +1,8 @@
+.page-link {
+  color: white;
+  background-color: #221b2f5f;
+  transition: all 0.3s ease-in-out;
+}
+.page-link:hover {
+  color: #b43feb;
+}

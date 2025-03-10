@@ -1,0 +1,55 @@
+.card {
+  background-color: transparent !important;
+  border: none !important;
+  width: 14.6rem;
+  height: 15rem;
+}
+.card img {
+  height: 75% !important;
+  object-fit: fill;
+}
+.card-des,
+.card-des2 {
+  font-size: 0.82rem !important;
+}
+.card-des2 {
+  color: gray;
+}
+
+.heart-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.21);
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.heart-icon:hover {
+  color: crimson;
+}
+
+.fav-movie {
+  color: crimson !important;
+}
+
+@keyframes cardAnimation {
+  0% {
+    rotate: -1deg;
+  }
+
+  100% {
+    rotate: 1deg;
+  }
+}
+.card:hover {
+  background-color: transparent !important;
+  color: white !important;
+  transform: scale(1.05);
+  transition: all 0.5s ease-in-out;
+  animation-name: cardAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
