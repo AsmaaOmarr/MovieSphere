@@ -11,6 +11,8 @@ import { LoginComponent } from './components/Auth/login/login.component';
 import { RegisterComponent } from './components/Auth/register/register.component';
 import { StartComponent } from './components/Auth/start/start.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { subscriptionGuard } from './guards/subscription.guard';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 export const routes: Routes = [
   {
@@ -47,6 +49,12 @@ export const routes: Routes = [
         path: 'success',
         component: PaypalSuccessScreenComponent,
         title: 'Payment Success',
+      },
+      {
+        path: 'movie/:id',
+        component: MovieDetailsComponent,
+        title: 'Movie Details',
+        canActivate: [subscriptionGuard],
       },
     ],
   },

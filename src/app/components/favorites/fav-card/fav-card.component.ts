@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../../button/button.component';
 import { MovieService } from '../../../services/movie.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-fav-card',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './fav-card.component.html',
   styleUrl: './fav-card.component.css',
 })
