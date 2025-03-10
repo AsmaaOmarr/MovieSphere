@@ -11,7 +11,7 @@ import { MovieService } from '../../services/movie.service';
 export class DiscoveryComponent implements OnInit {
   movies: any[] = [];
   currentPage: number = 1;
-
+  totalPages: number = 500;
   constructor(private movieService: MovieService) {}
   ngOnInit(): void {
     this.fetchMovies();
@@ -47,8 +47,10 @@ export class DiscoveryComponent implements OnInit {
     });
   }
   nextPage(): void {
-    this.currentPage++;
-    this.fetchMovies();
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.fetchMovies();
+    }
   }
 
   prevPage(): void {
