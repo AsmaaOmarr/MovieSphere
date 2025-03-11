@@ -11,6 +11,6 @@ import { APP_COLORS } from '../../../constants';
 export class SliderComponent implements OnInit{
   bgColor: string = APP_COLORS.secondaryDark;
   ngOnInit() {
-    console.log("Slider Loaded"); // 🔍 هذا سيساعدنا في معرفة عدد مرات تحميل السلايدر
+    console.log("Slider Loaded"); 
   }
 }

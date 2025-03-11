@@ -10,7 +10,8 @@
       "id": "40cf",
       "username": "arww",
       "email": "aymanarwa05@gm",
-      "password": "123456"
+      "password": "123456",
+      "isSubscribed": true
     },
     {
       "id": "6730",
@@ -39,6 +40,13 @@
       "email": "abcd@gmail.com",
       "password": "123456",
       "isSubscribed": true
+    },
+    {
+      "id": "c843",
+      "username": "arwa",
+      "email": "ayman@s.com",
+      "password": "123456",
+      "isSubscribed": false
     }
   ]
 }
