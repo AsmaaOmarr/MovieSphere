@@ -13,10 +13,32 @@
       "password": "123456"
     },
     {
-      "id": "a450",
-      "username": "asmaa omar",
-      "email": "asmaa@gmail.com",
-      "password": "asmaa123"
+      "id": "6730",
+      "username": "asmaa",
+      "email": "omarasmaa241@gmail.com",
+      "password": "asmaa123",
+      "isSubscribed": false
+    },
+    {
+      "id": "517c",
+      "username": "Mohamed",
+      "email": "t.jemy25@gmail.com",
+      "password": "123456",
+      "isSubscribed": false
+    },
+    {
+      "id": "1912",
+      "username": "mmmm",
+      "email": "mmm@gmail.com",
+      "password": "123456",
+      "isSubscribed": false
+    },
+    {
+      "id": "e1f7",
+      "username": "acbd",
+      "email": "abcd@gmail.com",
+      "password": "123456",
+      "isSubscribed": true
     }
   ]
 }

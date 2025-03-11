@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../../services/movie.service';
 import { CommonModule } from '@angular/common';
-import { MovieCardComponent } from '../discovery/movie-card/movie-card.component';
-import { FavCardComponent } from './fav-card/fav-card.component';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MovieService } from '../../services/movie.service';
+import { FavCardComponent } from './fav-card/fav-card.component';
 
 @Component({
   selector: 'app-favorites',
-  imports: [CommonModule, MovieCardComponent, FavCardComponent,RouterModule],
+  imports: [CommonModule, FavCardComponent,RouterModule],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css',
 })

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { APP_COLORS } from '../../constants';
-import { Feature, Plan } from '../../interfaces/subscription-plan.interface';
-import { SubscriptionCardComponent } from '../subscription-card/subscription-card.component';
 import { ActivatedRoute } from '@angular/router';
+import { APP_COLORS } from '../../../../constants';
+import { Feature, Plan } from '../../../../interfaces/subscription-plan.interface';
+import { SubscriptionCardComponent } from '../subscription-card/subscription-card.component';
 
 @Component({
   selector: 'app-subscription-details-screen',

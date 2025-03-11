@@ -1,9 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { APP_COLORS } from '../../../constants';
-import { CommonModule } from '@angular/common';
 
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
 import {
   AbstractControl,
   FormControl,
@@ -13,6 +11,8 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -65,13 +65,14 @@ export class RegisterComponent {
 
   register() {
     this.authService.register(this.user).subscribe(
-      () => {
-         localStorage.setItem('loggedInUser', JSON.stringify(this.user));
+      (createdUser) => {
+        localStorage.setItem('loggedInUser', JSON.stringify(createdUser));
         this.router.navigate(['/home']);
       },
       () => alert('Registration failed!')
     );
   }
+  
 
   toggleConfirmPassword() {
     this.showConfirmPassword = !this.showConfirmPassword;

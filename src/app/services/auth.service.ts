@@ -27,8 +27,10 @@ export class AuthService {
     if (user) {
       const parsedUser = JSON.parse(user);
       return {
+        id: parsedUser.id,
         username: parsedUser.username,
         email: parsedUser.email,
+        password : parsedUser.password,
         isSubscribed: parsedUser.isSubscribed,
       };
     }
@@ -41,8 +43,10 @@ export class AuthService {
 
   subscribeUser() {
     const user = this.getLoggedInUser();
+    console.log('User:', user);
     if (user) {
       const updatedUser = { ...user, isSubscribed: true };
+      console.log('Updated user:', updatedUser);
       localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
       this.http.put(`${this.apiUrl}/${user.id}`, updatedUser).subscribe({
         next: (res) => console.log('Subscription updated:', res),

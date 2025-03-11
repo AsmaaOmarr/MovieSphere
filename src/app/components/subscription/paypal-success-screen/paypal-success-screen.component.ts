@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { APP_COLORS } from '../../constants';
+import { APP_COLORS } from '../../../constants';
 
 @Component({
   selector: 'app-paypal-success-screen',
