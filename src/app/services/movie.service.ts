@@ -42,6 +42,26 @@ export class MovieService {
     );
   }
 
+  // Fetch movie details including --->  videos
+  fetchMovieDetails(movieId: number): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&append_to_response=videos`,
+      {
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MWMzMzgyZTI1NTExZGU1YzEwYWIzYzhkODQ0ZTgyMyIsIm5iZiI6MTc0MDc0NTcyOS44MDE5OTk4LCJzdWIiOiI2N2MxYWMwMWM5MzI3MTQ5MWYzNWM2ZGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.lwjVio0S9VUL4z0-tvj2fX93T1K67waT6mRiGEy6BuI'
+        },
+      }
+    );
+  }
+
+  // Fetch movie recommendatins
+  fetchMovieRecommendations(movieId: number): Observable<any> {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${this.apiKey}`
+    );
+  }
+
   getFavorites(): Observable<any> {
     return this.http.get(
       `https://api.themoviedb.org/3/account/21849475/favorite/movies?api_key=${this.apiKey}`,

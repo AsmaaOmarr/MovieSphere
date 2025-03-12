@@ -12,19 +12,19 @@ import { RegisterComponent } from './components/Auth/register/register.component
 import { StartComponent } from './components/Auth/start/start.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { subscriptionGuard } from './guards/subscription.guard';
-import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: StartComponent,
-    children: [
-      { path: '', redirectTo: 'register', pathMatch: 'full' },
-      { path: 'register', component: RegisterComponent },
+  // {
+  //   path: '',
+  //   component: StartComponent,
+  //   children: [
+  //     { path: '', redirectTo: 'register', pathMatch: 'full' },
+  //     { path: 'register', component: RegisterComponent },
 
-      { path: 'login', component: LoginComponent },
-    ],
-  },
+  //     { path: 'login', component: LoginComponent },
+  //   ],
+  // },
   {
     path: 'home',
     component: HomeComponent,
@@ -39,6 +39,8 @@ export const routes: Routes = [
         title: 'coming soon',
       },
       { path: 'favorites', component: FavoritesComponent, title: 'favorites' },
+      
+
       {
         path: 'subscribe',
         component: SubscriptionDetailsScreenComponent,
@@ -52,7 +54,7 @@ export const routes: Routes = [
       },
       {
         path: 'movie/:id',
-        component: MovieDetailsComponent,
+        component: MovieDetailComponent,
         title: 'Movie Details',
         canActivate: [subscriptionGuard],
       },
