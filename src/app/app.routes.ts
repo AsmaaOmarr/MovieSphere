@@ -15,16 +15,16 @@ import { subscriptionGuard } from './guards/subscription.guard';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 
 export const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: StartComponent,
-  //   children: [
-  //     { path: '', redirectTo: 'register', pathMatch: 'full' },
-  //     { path: 'register', component: RegisterComponent },
+  {
+    path: '',
+    component: StartComponent,
+    children: [
+      { path: '', redirectTo: 'register', pathMatch: 'full' },
+      { path: 'register', component: RegisterComponent },
 
-  //     { path: 'login', component: LoginComponent },
-  //   ],
-  // },
+      { path: 'login', component: LoginComponent },
+    ],
+  },
   {
     path: 'home',
     component: HomeComponent,
