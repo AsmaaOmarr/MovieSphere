@@ -1,0 +1,98 @@
+.counter-section {
+  text-align: center;
+  padding: 50px;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.col {
+  background: rgb(222, 222, 222);
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 180px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.col:hover {
+  transform: translateY(-10px);
+  box-shadow: 1px 1px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.count-number {
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px;
+  color: #6e8efb;
+}
+
+.icon {
+  font-size: 40px;
+  color: #6e8efb;
+  margin-bottom: 10px;
+}
+
+/* تأثير التوهج */
+.col::before {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 250%;
+  background: rgba(255, 255, 255, 0.2);
+  top: 0;
+  filter: blur(5px);
+  transform: rotate(50deg) translate(-450%, 0);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.col:hover::before {
+  transform: rotate(45deg) translate(450%, 0);
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* تأثير التحريك والتوهج عند التحويم */
+.col:hover .icon {
+  transform: rotate(10deg) scale(1.2);
+  transition: 0.3s ease-in-out;
+}
+
+
+/* تأثير hover الجديد */
+.col:hover {
+  transform: translateY(10px);
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.col:hover::before {
+  transform: rotate(45deg) translate(450%, 0);
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* عند خروج المؤشر يعود العنصر لمكانه */
+.col:not(:hover) {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+
