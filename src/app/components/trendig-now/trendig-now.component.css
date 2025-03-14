@@ -1,0 +1,27 @@
+.carousel-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+  
+  .carousel {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .movie {
+    flex: 0 0 auto;
+    width: 150px;
+  }
+
+  .movie img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+
+  .movie-item:hover {
+    transform: scale(1.1) translateY(-10px);
+  }
+  
+  

@@ -1,0 +1,13 @@
+<div #counterSection class="counter-section">
+  <div class="row">
+    <small class="mb-3">We have the fun, we have the gun, it's very bad to run.</small>
+    <h2 class="title">Most Reviewed Topic</h2>
+    <div *ngFor="let num of numbers" class="col">
+      <i class="icon fas fa-chart-bar"></i>
+      <h3>{{ num.category }}</h3>
+      <span class="count-number">{{ num.count }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- https://www.proglobalbusinesssolutions.com/css-hover-effects/ -->

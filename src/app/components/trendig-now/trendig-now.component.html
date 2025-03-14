@@ -1,0 +1,18 @@
+
+<!-- http://themes.getbootstrap.com/preview/?theme_id=1714 -->
+<!-- https://themes.getbootstrap.com/preview/?theme_id=5348  for cards -->
+<!-- https://bootstrapmade.com/demo/EasyFolio/ -->
+
+  
+    <div class="d-flex justify-content-center my-2">
+        <h3 >Top Rated Movies</h3>
+        
+    </div>
+   <div class="carousel-container my-5">
+    <div class="carousel" #carousel>
+      <div class="movie" *ngFor="let movie of topRatedMovies">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title">
+      </div>
+    </div>
+  </div>
+  

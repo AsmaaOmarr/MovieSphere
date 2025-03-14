@@ -1,17 +1,11 @@
 {
   "users": [
     {
-      "id": "c861",
-      "username": "arwa",
-      "email": "aymanarwa05@gmail.com",
-      "password": "1234"
-    },
-    {
-      "id": "40cf",
-      "username": "arww",
-      "email": "aymanarwa05@gm",
+      "id": "060c",
+      "username": "Hassan",
+      "email": "hzidan014@gmail.com",
       "password": "123456",
-      "isSubscribed": true
+        "isSubscribed": false,
     },
     {
       "id": "6730",
@@ -47,6 +41,7 @@
       "email": "ayman@s.com",
       "password": "123456",
       "isSubscribed": false
+
     }
   ]
 }

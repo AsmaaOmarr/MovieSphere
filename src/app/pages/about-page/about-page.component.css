@@ -1,0 +1,42 @@
+
+  
+  body {
+    background-color: #e0e0e0; /* لون الخلفية الداكن */
+  }
+  
+
+  .content-container {
+    position: relative;
+    width: 95%;
+    margin: -5% auto 0 auto; /* رفع الكارد لأعلى ليتداخل مع الـ Hero */
+    /* background-color: #f2f4fa ; */
+    background-color: #f5f5fa ;
+    padding: 20px 0;
+    border-radius: 6px;
+    box-shadow: 0px 40px 100px rgba(0, 0, 0, 0.593);
+    
+    z-index: 3; /* أعلى من الـ Hero */
+}
+
+
+/* .content-container {
+  width: 85%; 
+  margin: 0 auto; 
+  // background-color: #f8f9fa; 
+  background-color: #ffffff; 
+  padding: 10px;
+  border-radius: 15px; 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
+/* } */
+
+
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-in-out;
+}
+
+.section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
