@@ -8,19 +8,18 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-sidebar',
   imports: [CommonModule, RouterModule],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-    constructor(private authService: AuthService) {}
-  
+  constructor(private authService: AuthService) {}
+
   bgColor = APP_COLORS.sideBar;
   activeColor = APP_COLORS.secondary;
   activeItem = 'discovery';
   setActive(item: string) {
     this.activeItem = item;
   }
-  logout(){
-this.authService.logout()
+  logout() {
+    this.authService.logout();
   }
-
 }

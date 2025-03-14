@@ -32,6 +32,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'discovery', pathMatch: 'full' },
       { path: 'discovery', component: DiscoveryComponent, title: 'discovery' },
       { path: 'topRated', component: DiscoveryComponent, title: 'top rated' },
+      { path: 'settings', component: DiscoveryComponent, title: 'settings' },
       {
         path: 'comingSoon',
         component: DiscoveryComponent,
