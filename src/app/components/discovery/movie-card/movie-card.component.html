@@ -1,0 +1,37 @@
+<!-- <a class="text-decoration-none">
+  <div
+    class="card border-0 mt-5 mx-2 text-center movie-card"
+    style="width: 13rem"
+  >
+    <i class="bi bi-heart-fill heart-icon"></i>
+    <img class="card-img-top" [src]="imgPath + posterPath" alt="Movie Poster" />
+    <div class="card-body">
+      <h6 class="card-title">{{ title }}</h6>
+    </div>
+  </div>
+</a> -->
+<a [routerLink]="['/home/movie', movie.id]" class="text-decoration-none">
+  <div class="card text-light mb-4">
+    <i
+      class="bi bi-heart-fill heart-icon"
+      [ngClass]="isFavorite ? 'fav-movie' : 'none'"
+      (click)="toggleFavorite($event, movie.id)"
+    ></i>
+    <img
+      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+      class="card-img-top rounded-4"
+      alt="{{ movie.title }}"
+    />
+    <div class="p-1">
+      <h6 class="">{{ movie.title }}</h6>
+      <span class="card-des me-2"
+        ><i class="bi bi-star-fill text-warning me-1"></i>
+        {{ getFormattedRating(movie.vote_average) }}</span
+      >
+      <span class="card-des2 me-2">|</span>
+      <span class="card-des2">{{
+        movie.genre_names?.slice(0, 3).join(" ")
+      }}</span>
+    </div>
+  </div>
+</a>

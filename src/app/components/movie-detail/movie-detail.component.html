@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieSphere</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="container" *ngIf="movie">
+      <div class="left-side">
+        <div class="video-player" *ngIf="movie.videos?.results?.length > 0">
+          <iframe
+            [src]="
+              sanitizer.bypassSecurityTrustResourceUrl(
+                'https://www.youtube.com/embed/' +
+                  movie.videos.results[0].key +
+                  '?rel=0&modestbranding=1'
+              )
+            "
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="movie-info">
+          <h1>{{ movie.title || "Untitled Movie" }}</h1>
+          <p class="genreNames">
+            {{ movie.genreNames || "No Genres Available" }}
+          </p>
+          <p>⭐ {{ movie.vote_average || "N/A" }}</p>
+          <h2>Story Line</h2>
+          <p>{{ movie.overview || "No description available." }}</p>
+        </div>
+      </div>
+      <div class="right-side">
+        <h4 class="rec">Recommendations</h4>
+        <div class="recommendations">
+          <ng-container *ngFor="let recMovie of visibleRecommendations">
+            <div class="movie-item">
+              <img
+                [src]="
+                  'https://image.tmdb.org/t/p/w500' +
+                  (recMovie.poster_path || '')
+                "
+                [alt]="recMovie.title || 'No Title'"
+                class="movie-photo"
+              />
+              <div class="movie-details">
+                <div class="movie-title">
+                  {{ recMovie.title || "Unknown Movie" }}
+                </div>
+
+                <div class="movie-rating">
+                  ⭐ {{ recMovie.vote_average || "N/A" }}
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <div class="show-more" (click)="toggleShowMore()">
+            {{ showMore ? "Show Less" : "Show More" }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

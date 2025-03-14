@@ -19,7 +19,6 @@ import { HeroComponent } from "./components/hero/hero.component";
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-
   handleClick() {
     return alert('hi');
   }

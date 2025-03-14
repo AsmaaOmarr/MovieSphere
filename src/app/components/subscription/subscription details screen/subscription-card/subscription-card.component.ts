@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { APP_COLORS } from '../../constants';
-import { Feature } from '../../interfaces/subscription-plan.interface';
+import { APP_COLORS } from '../../../../constants';
+import { Feature } from '../../../../interfaces/subscription-plan.interface';
 
 
 @Component({

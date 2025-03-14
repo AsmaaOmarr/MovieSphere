@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://localhost:5000/users';
@@ -22,13 +22,36 @@ export class AuthService {
     localStorage.removeItem('loggedInUser');
     this.router.navigate(['/login']);
   }
-  getLoggedInUser(): { username: string; email: string } | null {
+  getLoggedInUser(): any | null {
     const user = localStorage.getItem('loggedInUser');
     if (user) {
       const parsedUser = JSON.parse(user);
-      return { username: parsedUser.username, email: parsedUser.email }; // 🔹 إرجاع فقط الاسم والبريد
+      return {
+        id: parsedUser.id,
+        username: parsedUser.username,
+        email: parsedUser.email,
+        password : parsedUser.password,
+        isSubscribed: parsedUser.isSubscribed,
+      };
     }
     return null;
   }
-  
+  isSubscribed(): boolean {
+    const user = this.getLoggedInUser();
+    return user.isSubscribed;
+  }
+
+  subscribeUser() {
+    const user = this.getLoggedInUser();
+    console.log('User:', user);
+    if (user) {
+      const updatedUser = { ...user, isSubscribed: true };
+      console.log('Updated user:', updatedUser);
+      localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+      this.http.put(`${this.apiUrl}/${user.id}`, updatedUser).subscribe({
+        next: (res) => console.log('Subscription updated:', res),
+        error: (err) => console.error('Error updating subscription:', err),
+      });
+    }
+  }
 }

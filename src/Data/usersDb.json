@@ -1,28 +1,47 @@
 {
   "users": [
     {
-      "id": "c861",
-      "username": "arwa",
-      "email": "aymanarwa05@gmail.com",
-      "password": "1234"
-    },
-    {
-      "id": "40cf",
-      "username": "arww",
-      "email": "aymanarwa05@gm",
-      "password": "123456"
-    },
-    {
-      "id": "a450",
-      "username": "asmaa omar",
-      "email": "asmaa@gmail.com",
-      "password": "asmaa123"
-    },
-    {
       "id": "060c",
       "username": "Hassan",
       "email": "hzidan014@gmail.com",
-      "password": "123456"
+      "password": "123456",
+        "isSubscribed": false,
+    },
+    {
+      "id": "6730",
+      "username": "asmaa",
+      "email": "omarasmaa241@gmail.com",
+      "password": "asmaa123",
+      "isSubscribed": false
+    },
+    {
+      "id": "517c",
+      "username": "Mohamed",
+      "email": "t.jemy25@gmail.com",
+      "password": "123456",
+      "isSubscribed": false
+    },
+    {
+      "id": "1912",
+      "username": "mmmm",
+      "email": "mmm@gmail.com",
+      "password": "123456",
+      "isSubscribed": false
+    },
+    {
+      "id": "e1f7",
+      "username": "acbd",
+      "email": "abcd@gmail.com",
+      "password": "123456",
+      "isSubscribed": true
+    },
+    {
+      "id": "c843",
+      "username": "arwa",
+      "email": "ayman@s.com",
+      "password": "123456",
+      "isSubscribed": false
+
     }
   ]
 }
