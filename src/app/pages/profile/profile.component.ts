@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
+  
 export class ProfileComponent implements OnInit {
   userForm!: FormGroup;
   showAlert: boolean = false;
