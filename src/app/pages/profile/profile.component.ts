@@ -1,72 +1,129 @@
 import { Component, Injectable, type OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service'; // ✅ تأكد من كتابة الاسم بشكل صحيح
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 @Component({
   selector: 'app-profile',
-  imports: [ReactiveFormsModule ],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
-  providers:[
-    UserService,
-
-  ]
 })
-export class ProfileComponent implements OnInit   {
+export class ProfileComponent implements OnInit {
+  userForm!: FormGroup;
+  showAlert: boolean = false;
+  profileImage: string | ArrayBuffer | null =
+    'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541';
+  alertMessage: string = 'default';
+  alertColor: string = 'success';
+  name: string = '';
 
-  userData: any = {}; // تخزين بيانات المستخدم
-  dynamicKeys: string[] = []; // تخزين الخصائص الديناميكية
-
-  userForm: FormGroup;
-  constructor(private userService: UserService) {
-    this.userForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      userName: new FormControl(''),
-      phoneNumber: new FormControl(''),
-      age: new FormControl(''),
-      email: new FormControl(''),
-      gender: new FormControl('')
-    });
-  }
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.userService.loadUserInfo().subscribe({
-      next: (data) => {
-        if (data) {
-          this.userData = data;
-          this.userForm.patchValue(data);
-          console.log(this.userData);
-        }
-      },
-      error: (err) => {
-        console.error('Error fetching user data:', err);
+    this.initForm();
+    //  Load from localStorage
+    const storedUser = localStorage.getItem('loggedInUser');
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      this.userForm.patchValue(userData);
+      this.name = userData.username;
+      if (userData.profileImage) {
+        this.profileImage = userData.profileImage;
       }
+    }
+    this.getUserDetails();
+  }
+
+  getUserDetails(): void {
+    this.authService.fetchUserData().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.userForm.patchValue(response);
+        if (response.profileImage) {
+          this.profileImage = response.profileImage;
+        }
+        // Store updated data in localStorage
+        localStorage.setItem('loggedInUser', JSON.stringify(response));
+      },
+      error: (error) => {
+        console.error('Error fetching user data:', error);
+      },
+    });
+  }
+  // Initialize Form
+  initForm() {
+    this.userForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      username: ['', Validators.required],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      age: ['', [Validators.required, Validators.min(1)]],
+      email: ['', [Validators.required, Validators.email]],
+      gender: [''],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      isSubscribed: [false],
+      profileImage: [''],
     });
   }
 
-  onSubmit() {
-    if (this.userForm.valid) {
-      const userData = this.userForm.value; // جلب كل بيانات الفورم
-      this.userService.addUser(userData).subscribe({
-        next: (data) => {
-          console.log('تم إرسال البيانات بنجاح:', data);
-          alert('تم الحفظ بنجاح! ✅');
-        },
-        error: (err) => {
-          console.error('خطأ أثناء إرسال البيانات:', err);
-          alert('حدث خطأ أثناء الحفظ! ❌');
-        }
-      });
-    } else {
-      alert('يرجى ملء جميع الحقول المطلوبة! ⚠️');
+  onImageUpload(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.profileImage = reader.result;
+        this.userForm.patchValue({ profileImage: reader.result });
+      };
+      reader.readAsDataURL(file);
     }
   }
+  onSubmit() {
+    if (this.userForm.invalid) {
+      this.showAlert = true;
+      this.alertMessage = 'Please fill all required fields correctly 👀👀';
+      this.alertColor = 'danger';
+      setTimeout(() => {
+        this.showAlert = false;
+      }, 6000);
+      // alert('Please fill all required fields correctly.');
+      return;
+    }
+    const userId = this.authService.getLoggedInUserId();
+    if (userId === null || userId == undefined) {
+      alert('User not found.');
+      return;
+    }
+    const updatedUser = { ...this.userForm.value };
+    console.log(updatedUser);
+    // Update User Data in JSON Server
+    this.authService.updateUserData(updatedUser).subscribe({
+      next: (response: any) => {
+        //update in localStorage
+        localStorage.setItem(
+          'loggedInUser',
+          JSON.stringify({ ...updatedUser, id: userId })
+        );
+        this.showAlert = true;
+        this.alertMessage = 'Profile updated successfully ✅✅';
+        this.alertColor = 'success';
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 6000);
+      },
+      error: (error: any) => {
+        console.error('Error updating user:', error);
+        this.showAlert = true;
+        this.alertMessage = 'Error updating date try again later 😥😥';
+        this.alertColor = 'error';
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 6000);
+      },
+    });
+  }
 }
-

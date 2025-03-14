@@ -57,9 +57,9 @@ export const routes: Routes = [
         title: 'Movie Details',
         canActivate: [subscriptionGuard],
       },
+      { path: 'profile', component: ProfileComponent, title: 'Profile' },
     ],
   },
 
   { path: 'about', component: AboutPageComponent, title: 'About Us' },
-  { path: 'profile', component: ProfileComponent, title: 'Profile' },
 ];

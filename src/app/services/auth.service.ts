@@ -30,7 +30,7 @@ export class AuthService {
         id: parsedUser.id,
         username: parsedUser.username,
         email: parsedUser.email,
-        password : parsedUser.password,
+        password: parsedUser.password,
         isSubscribed: parsedUser.isSubscribed,
       };
     }
@@ -53,5 +53,31 @@ export class AuthService {
         error: (err) => console.error('Error updating subscription:', err),
       });
     }
+  }
+
+  getLoggedInUserId(): number | null {
+    const user = localStorage.getItem('loggedInUser');
+    console.log(user);
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      console.log(parsedUser);
+      console.log(parsedUser.id);
+      return parsedUser.id;
+    }
+    return null;
+  }
+
+  // Fetch User Data from JSON Server
+  fetchUserData(): Observable<any> {
+    const userId = this.getLoggedInUserId();
+    return this.http.get(`${this.apiUrl}/${userId}`);
+  }
+
+  updateUserData(updatedUser: any): Observable<any> {
+    const userId = this.getLoggedInUserId();
+    return this.http.put(`${this.apiUrl}/${userId}`, {
+      ...updatedUser,
+      id: userId,
+    });
   }
 }

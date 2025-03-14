@@ -1,52 +1,61 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule,ReactiveFormsModule,CommonModule,RouterModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-    encapsulation: ViewEncapsulation.None 
-  
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent {
   showPassword = false;
-  inValidUser=false;
+  inValidUser = false;
   user = { username: '', password: '' };
 
-  constructor(private authService: AuthService,private router:Router) {}
-loginFormValidation= new FormGroup({
-
-  name: new FormControl(null, [Validators.required, Validators.minLength(4)]),
-  password:new FormControl(null,[Validators.minLength(6),Validators.required])
- },
-
-);
-get name (){
-  return this.loginFormValidation.get("name")
-}
-get password (){
-  return this.loginFormValidation.get("password")
-}
-login() {
-  this.authService.login(this.user.username, this.user.password).subscribe(users => {
-    const validUser = users.find((u: any) =>
-      u.username === this.user.username && u.password === this.user.password
-    );
-    if (validUser) {
-      localStorage.setItem('loggedInUser', JSON.stringify(validUser));
-      this.router.navigate(['/home']);
-    } else {
-      this.inValidUser = true;
-    }
+  constructor(private authService: AuthService, private router: Router) {}
+  loginFormValidation = new FormGroup({
+    name: new FormControl(null, [Validators.required, Validators.minLength(4)]),
+    password: new FormControl(null, [
+      Validators.minLength(6),
+      Validators.required,
+    ]),
   });
-}
+  get name() {
+    return this.loginFormValidation.get('name');
+  }
+  get password() {
+    return this.loginFormValidation.get('password');
+  }
+  login() {
+    this.authService
+      .login(this.user.username, this.user.password)
+      .subscribe((users) => {
+        const validUser = users.find(
+          (u: any) =>
+            u.username === this.user.username &&
+            u.password === this.user.password
+        );
+        if (validUser) {
+          localStorage.setItem('loggedInUser', JSON.stringify(validUser));
+          // console.log(localStorage.getItem('loggedInUser'));
+          this.router.navigate(['/home']);
+        } else {
+          this.inValidUser = true;
+        }
+      });
+  }
 
- 
- togglePassword() {
-   this.showPassword = !this.showPassword;
- }
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 }

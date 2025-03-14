@@ -5,264 +5,186 @@
   crossorigin="anonymous"
 />
 
-<div class="container">
-  <div class="row">
-    <div class="col-12">
+<div class="container text-white">
+  <div class="row justify-content-center">
+    <!-- alert -->
+    <div
+      *ngIf="showAlert"
+      class="alert alert-{{
+        alertColor
+      }} alert-dismissible fade show position-fixed top-3 start-50 translate-middle-x shadow"
+      style="z-index: 1050; width: 60%; text-align: center"
+      role="alert"
+    >
+      {{ alertMessage }}
+      <button
+        type="button"
+        class="btn-close"
+        (click)="showAlert = false"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="col-lg-8">
       <!-- Page title -->
-      <div class="my-5">
-        <h3>My Profile</h3>
+      <div class="my-5 text-center">
+        <h3>Welcome {{ name }}👋🏻👋🏻</h3>
         <hr />
       </div>
+      <!-- image -->
+      <div class="text-center my-4">
+        <div class="position-relative d-inline-block">
+          <!-- Profile Image -->
+          <img
+            [src]="profileImage"
+            alt="Profile Picture"
+            class="rounded-circle border border-3 border-white shadow-lg"
+            width="200"
+            height="200"
+            style="object-fit: cover; background-color: #f8f9fa"
+          />
+          <!-- Upload Icon -->
+          <label
+            for="imageUpload"
+            class="position-absolute bottom-0 end-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center shadow"
+            style="
+              width: 45px;
+              height: 45px;
+              border: 3px solid white;
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+            "
+          >
+            <i class="fas fa-camera"></i>
+          </label>
+
+          <!-- Hidden File Input -->
+          <input
+            type="file"
+            id="imageUpload"
+            accept="image/*"
+            class="d-none"
+            (change)="onImageUpload($event)"
+          />
+        </div>
+      </div>
+
       <!-- Form START -->
       <form class="file-upload" [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <div class="row mb-5 gx-5">
-          <!-- Contact detail -->
-          <div class="col-xxl-8 mb-5 mb-xxl-0">
+          <!-- Contact details -->
+          <div class="col-lg-12">
             <div class="bg-secondary-soft px-4 py-5 rounded">
+              <h4 class="mb-4 mt-0 text-center">User Info</h4>
               <div class="row g-3">
-                <h4 fclass="mb-4 mt-0">User Info</h4>
-                <!-- First Name -->
                 <div class="col-md-6">
                   <label class="form-label">First Name *</label>
                   <input
                     type="text"
                     class="form-control"
                     formControlName="firstName"
+                    placeholder="Enter your first name"
                   />
                 </div>
-                <!-- Last name -->
                 <div class="col-md-6">
                   <label class="form-label">Last Name *</label>
                   <input
                     type="text"
                     class="form-control"
                     formControlName="lastName"
+                    placeholder="Enter your last name"
                   />
                 </div>
-                <!-- user name -->
                 <div class="col-md-6">
                   <label class="form-label">User Name *</label>
-                  <input type="text" class="form-control" formControlName="userName" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="username"
+                    placeholder="Choose a username"
+                    readonly
+                  />
                 </div>
-                <!-- Phone number -->
                 <div class="col-md-6">
                   <label class="form-label">Phone number *</label>
                   <input
                     type="text"
                     class="form-control"
                     formControlName="phoneNumber"
+                    placeholder="Enter your phone number"
                   />
                 </div>
-                <!-- Mobile number -->
                 <div class="col-md-6">
                   <label class="form-label">Age</label>
                   <input
                     type="text"
                     class="form-control"
                     formControlName="age"
+                    placeholder="Enter your age"
                   />
                 </div>
-                <!-- Email -->
                 <div class="col-md-6">
-                  <label for="inputEmail4" class="form-label">Email *</label>
+                  <label class="form-label">Email *</label>
                   <input
                     type="email"
                     class="form-control"
                     formControlName="email"
+                    placeholder="Enter your email address"
+                    readonly
                   />
                 </div>
-                <!-- Skype -->
                 <div class="col-md-6">
                   <label class="form-label">Gender</label>
                   <input
                     type="text"
                     class="form-control"
                     formControlName="gender"
+                    placeholder="Enter your gender"
                   />
-                </div>
-              </div>
-              <!-- Row END -->
-            </div>
-          </div>
-
-          <!-- Upload profile -->
-          <div class="col-xxl-4">
-            <div class="bg-secondary-soft px-4 py-5 rounded">
-              <div class="row g-3">
-                <h4 class="mb-4 mt-0">
-                  <span>Welcome User😊,</span> <br />Upload your profile photo
-                </h4>
-                <div class="text-center">
-                  <!-- Image upload -->
-                  <div class="square position-relative display-2 mb-3">
-                    <i
-                      class="fas fa-fw fa-user position-absolute top-50 start-50 translate-middle text-secondary"
-                    ></i>
-                  </div>
-                  <!-- Button -->
-                  <input type="file" id="customFile" name="file" hidden="" />
-                  <label class="btn btn-success-soft btn-block" for="customFile"
-                    >Upload</label
-                  >
-                  <button type="button" class="btn btn-danger-soft">
-                    Remove
-                  </button>
-                  <!-- Content -->
-                  <p class="text-muted mt-3 mb-0">
-                    <span class="me-1">Note:</span>Minimum size 300px x 300px
-                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- Row END -->
 
-        <!-- Social media detail -->
-        <div class="row mb-5 gx-5">
-          <div class="col-xxl-6 mb-5 mb-xxl-0">
+          <!-- Change Password -->
+          <!-- <div class="col-lg-12 mt-4">
             <div class="bg-secondary-soft px-4 py-5 rounded">
+              <h4 class="my-4 text-center">Change Password</h4>
               <div class="row g-3">
-                <h4 class="mb-4 mt-0">Social media detail</h4>
-                <!-- Facebook -->
                 <div class="col-md-6">
-                  <label class="form-label"
-                    ><i class="fab fa-fw fa-facebook me-2 text-facebook"></i
-                    >Facebook *</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    aria-label="Facebook"
-                    value="http://www.facebook.com"
-                  />
-                </div>
-                <!-- Twitter -->
-                <div class="col-md-6">
-                  <label class="form-label"
-                    ><i class="fab fa-fw fa-twitter text-twitter me-2"></i
-                    >Twitter *</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    aria-label="Twitter"
-                    value="http://www.twitter.com"
-                  />
-                </div>
-                <!-- Linkedin -->
-                <div class="col-md-6">
-                  <label class="form-label"
-                    ><i class="fab fa-fw fa-linkedin-in text-linkedin me-2"></i
-                    >Linkedin *</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    aria-label="Linkedin"
-                    value="http://www.linkedin.com"
-                  />
-                </div>
-                <!-- Instragram -->
-                <div class="col-md-6">
-                  <label class="form-label"
-                    ><i class="fab fa-fw fa-instagram text-instagram me-2"></i
-                    >Instagram *</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    aria-label="Instragram"
-                    value="http://www.instragram.com"
-                  />
-                </div>
-                <!-- Dribble -->
-                <div class="col-md-6">
-                  <label class="form-label"
-                    ><i
-                      class="fas fa-fw fa-basketball-ball text-dribbble me-2"
-                    ></i
-                    >Dribble *</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    aria-label="Dribble"
-                    value="http://www.dribble.com"
-                  />
-                </div>
-                <!-- Pinterest -->
-                <div class="col-md-6">
-                  <label class="form-label"
-                    ><i class="fab fa-fw fa-pinterest text-pinterest"></i
-                    >Pinterest *</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    aria-label="Pinterest"
-                    value="http://www.pinterest.com"
-                  />
-                </div>
-              </div>
-              <!-- Row END -->
-            </div>
-          </div>
-
-          <!-- change password -->
-          <div class="col-xxl-6">
-            <div class="bg-secondary-soft px-4 py-5 rounded">
-              <div class="row g-3">
-                <h4 class="my-4">Change Password</h4>
-                <!-- Old password -->
-                <div class="col-md-6">
-                  <label for="exampleInputPassword1" class="form-label"
-                    >Old password *</label
-                  >
+                  <label class="form-label">Old password *</label>
                   <input
                     type="password"
                     class="form-control"
-                    id="exampleInputPassword1"
+                    id="oldPassword"
+                    placeholder="Enter old password"
                   />
                 </div>
-                <!-- New password -->
                 <div class="col-md-6">
-                  <label for="exampleInputPassword2" class="form-label"
-                    >New password *</label
-                  >
+                  <label class="form-label">New password *</label>
                   <input
                     type="password"
                     class="form-control"
-                    id="exampleInputPassword2"
+                    id="newPassword"
+                    placeholder="Enter new password"
                   />
                 </div>
-                <!-- Confirm password -->
                 <div class="col-md-12">
-                  <label for="exampleInputPassword3" class="form-label"
-                    >Confirm Password *</label
-                  >
+                  <label class="form-label">Confirm Password *</label>
                   <input
                     type="password"
                     class="form-control"
-                    id="exampleInputPassword3"
+                    id="confirmPassword"
+                    placeholder="Confirm new password"
                   />
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
-        <!-- Row END -->
-        <!-- button -->
-        <div class="gap-3 d-md-flex justify-content-md-end text-center m-5">
-          <button type="reset" class="btn btn-danger btn-lg">
-            Delete profile
-          </button>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-center gap-3 mt-4">
+          <!-- <button type="reset" class="btn btn-danger btn-lg">Delete profile</button> -->
           <button type="submit" class="btn btn-primary btn-lg">
             Update profile
           </button>
