@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
-import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { DiscoveryComponent } from './components/discovery/discovery.component';
 import { HomeComponent } from './components/home/home.component';
-import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { LoginComponent } from './components/Auth/login/login.component';
 import { RegisterComponent } from './components/Auth/register/register.component';
 import { StartComponent } from './components/Auth/start/start.component';
@@ -10,7 +8,6 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { subscriptionGuard } from './guards/subscription.guard';
-import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { SubscriptionDetailsScreenComponent } from './components/subscription/subscription details screen/subscription-details-screen/subscription-details-screen.component';
 import { PaymentScreenComponent } from './components/subscription/Payment Screen/payment-screen/payment-screen.component';
@@ -34,14 +31,13 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'discovery', pathMatch: 'full' },
       { path: 'discovery', component: DiscoveryComponent, title: 'discovery' },
-      { path: 'topRated', component: TopRatedComponent, title: 'top rated' },
+      { path: 'topRated', component: DiscoveryComponent, title: 'top rated' },
       {
         path: 'comingSoon',
-        component: ComingSoonComponent,
+        component: DiscoveryComponent,
         title: 'coming soon',
       },
       { path: 'favorites', component: FavoritesComponent, title: 'favorites' },
-
 
       {
         path: 'subscribe',
@@ -63,8 +59,6 @@ export const routes: Routes = [
     ],
   },
 
-  { path:'about',component:AboutPageComponent , title: 'About Us'},
-  { path:'profile',component:ProfileComponent , title: 'Profile'}
+  { path: 'about', component: AboutPageComponent, title: 'About Us' },
+  { path: 'profile', component: ProfileComponent, title: 'Profile' },
 ];
-
-

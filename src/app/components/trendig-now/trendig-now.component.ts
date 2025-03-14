@@ -4,18 +4,19 @@ import {
   ViewChild,
   ElementRef,
   AfterViewInit,
-  HostListener
+  HostListener,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { gsap } from 'gsap';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-trendig-now',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './trendig-now.component.html',
-  styleUrls: ['./trendig-now.component.css']
+  styleUrls: ['./trendig-now.component.css'],
 })
 export class TrendigNowComponent implements OnInit, AfterViewInit {
   topRatedMovies: any[] = [];
@@ -55,8 +56,8 @@ export class TrendigNowComponent implements OnInit, AfterViewInit {
       ease: 'linear',
       repeat: -1,
       modifiers: {
-        x: gsap.utils.unitize(x => parseFloat(x) % 100)
-      }
+        x: gsap.utils.unitize((x) => parseFloat(x) % 100),
+      },
     });
   }
 
