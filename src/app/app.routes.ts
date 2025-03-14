@@ -2,27 +2,16 @@ import { Routes } from '@angular/router';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { DiscoveryComponent } from './components/discovery/discovery.component';
 import { HomeComponent } from './components/home/home.component';
-import { PaymentScreenComponent } from './components/payment-screen/payment-screen.component';
-import { PaypalSuccessScreenComponent } from './components/paypal-success-screen/paypal-success-screen.component';
-import { SubscriptionDetailsScreenComponent } from './components/subscription-details-screen/subscription-details-screen.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { LoginComponent } from './components/Auth/login/login.component';
 import { RegisterComponent } from './components/Auth/register/register.component';
 import { StartComponent } from './components/Auth/start/start.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { AboutComponent } from './components/about/about/about.component';
-import { LoginComponent } from './components/Auth/login/login.component';
-import { RegisterComponent } from './components/Auth/register/register.component';
-import { StartComponent } from './components/Auth/start/start.component';
-import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
-import { DiscoveryComponent } from './components/discovery/discovery.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { subscriptionGuard } from './guards/subscription.guard';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
-import { HomeComponent } from './components/home/home.component';
-import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { SubscriptionDetailsScreenComponent } from './components/subscription/subscription details screen/subscription-details-screen/subscription-details-screen.component';
 import { PaymentScreenComponent } from './components/subscription/Payment Screen/payment-screen/payment-screen.component';
 import { PaypalSuccessScreenComponent } from './components/subscription/paypal-success-screen/paypal-success-screen.component';
@@ -30,7 +19,7 @@ import { PaypalSuccessScreenComponent } from './components/subscription/paypal-s
 export const routes: Routes = [
   {
     path: '',
-    component: StartComponent, 
+    component: StartComponent,
     children: [
       { path: '', redirectTo: 'register', pathMatch: 'full' },
       { path: 'register', component: RegisterComponent },
@@ -52,7 +41,7 @@ export const routes: Routes = [
         title: 'coming soon',
       },
       { path: 'favorites', component: FavoritesComponent, title: 'favorites' },
-      
+
 
       {
         path: 'subscribe',
@@ -77,5 +66,5 @@ export const routes: Routes = [
   { path:'about',component:AboutPageComponent , title: 'About Us'},
   { path:'profile',component:ProfileComponent , title: 'Profile'}
 ];
-];
+
 
