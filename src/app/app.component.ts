@@ -6,6 +6,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from "./components/home/home.component";
 import { HeroComponent } from "./components/hero/hero.component";
+import { StartComponent } from "./components/Auth/start/start.component";
+import { RegisterComponent } from "./components/Auth/register/register.component";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,9 @@ import { HeroComponent } from "./components/hero/hero.component";
     RouterOutlet,
     RouterModule,
     NavbarComponent,
-    HeroComponent
+    HeroComponent,
+    StartComponent,
+    RegisterComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
