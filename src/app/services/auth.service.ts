@@ -19,8 +19,15 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('loggedInUser');
+    const user = localStorage.getItem('loggedInUser');
+    console.log('Before logout:', localStorage.getItem('loggedInUser'));
+
+    localStorage.removeItem('loggedInUser'); // Remove user data
+  
+    console.log('After logout:', localStorage.getItem('loggedInUser')); // Should be null
+  
     this.router.navigate(['/login']);
+  
   }
   getLoggedInUser(): any | null {
     const user = localStorage.getItem('loggedInUser');

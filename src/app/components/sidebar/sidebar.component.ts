@@ -22,6 +22,8 @@ export class SidebarComponent implements OnInit {
     this.activeItem = item;
   }
   logout() {
+   
+    console.log('Logging out...');
     this.authService.logout();
   }
   ngOnInit(): void {

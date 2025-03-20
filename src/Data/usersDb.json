@@ -42,11 +42,17 @@
       "isSubscribed": true
     },
     {
-      "id": "c843",
+      "firstName": "Arrrrwa",
+      "lastName": "Soliman",
       "username": "arwa",
-      "email": "ayman@s.com",
+      "phoneNumber": "01154366009",
+      "age": "22",
+      "email": "aymanarwa05@gmail.com",
+      "gender": "female",
       "password": "123456",
-      "isSubscribed": false
+      "isSubscribed": false,
+      "profileImage": "",
+      "id": "284c"
     }
   ]
 }

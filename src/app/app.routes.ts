@@ -12,6 +12,8 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import { SubscriptionDetailsScreenComponent } from './components/subscription/subscription details screen/subscription-details-screen/subscription-details-screen.component';
 import { PaymentScreenComponent } from './components/subscription/Payment Screen/payment-screen/payment-screen.component';
 import { PaypalSuccessScreenComponent } from './components/subscription/paypal-success-screen/paypal-success-screen.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -28,6 +30,7 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     title: 'home',
+    canActivate:[authGuard],
     children: [
       { path: '', redirectTo: 'discovery', pathMatch: 'full' },
       { path: 'discovery', component: DiscoveryComponent, title: 'discovery' },
@@ -62,4 +65,7 @@ export const routes: Routes = [
   },
 
   { path: 'about', component: AboutPageComponent, title: 'About Us' },
+  { path: '**', component: NotfoundComponent, title: 'Not Found' },
+
+
 ];

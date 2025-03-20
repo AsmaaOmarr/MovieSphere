@@ -1,3 +1,19 @@
+<!-- alert -->
+<div
+*ngIf="showAlert"
+class="alert alert-warning alert-dismissible fade show position-fixed top-3 start-50 translate-middle-x shadow"
+style="z-index: 1050; width: 80%; text-align: center"
+role="alert"
+>
+<strong>⚠ Access Denied!</strong> You need to Login to view movies.
+<button
+  type="button"
+  class="btn-close"
+  (click)="showAlert = false"
+  aria-label="Close"
+></button>
+</div>
+<!-- end of alert -->
 
 <div class="d-flex justify-content-center align-items-center vh-100">
   <div class="card p-4   border-0 " style="width: 400px; border-radius: 12px; background-color: #221B2F; font-size: small;">

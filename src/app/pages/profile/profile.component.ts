@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
           this.profileImage = response.profileImage;
         }
         // Store updated data in localStorage
-        localStorage.setItem('loggedInUser', JSON.stringify(response));
+        // localStorage.setItem('loggedInUser', JSON.stringify(response));
       },
       error: (error) => {
         console.error('Error fetching user data:', error);

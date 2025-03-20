@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -7,22 +7,25 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule,FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class LoginComponent {
+export class LoginComponent  implements OnInit{
   showPassword = false;
   inValidUser = false;
   user = { username: '', password: '' };
+  showAlert: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+
+  constructor(private authService: AuthService, private router: Router,private route: ActivatedRoute) {}
+  
   loginFormValidation = new FormGroup({
     name: new FormControl(null, [Validators.required, Validators.minLength(4)]),
     password: new FormControl(null, [
@@ -30,6 +33,16 @@ export class LoginComponent {
       Validators.required,
     ]),
   });
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params['alert'] === 'true') {
+        this.showAlert = true;
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 6000);
+      }
+    });
+  }
   get name() {
     return this.loginFormValidation.get('name');
   }
