@@ -18,11 +18,11 @@ export class SidebarComponent implements OnInit {
   activeItem = 'discovery';
   profileImage: string | ArrayBuffer | null =
     'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541';
+  username: string = '';
   setActive(item: string) {
     this.activeItem = item;
   }
   logout() {
-   
     console.log('Logging out...');
     this.authService.logout();
   }
@@ -33,6 +33,7 @@ export class SidebarComponent implements OnInit {
       if (userData.profileImage) {
         this.profileImage = userData.profileImage;
       }
+      this.username = userData.username;
     }
   }
 }
