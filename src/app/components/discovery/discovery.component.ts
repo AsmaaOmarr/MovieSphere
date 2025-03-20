@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieService } from '../../services/movie.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-discovery',
-  imports: [MovieCardComponent],
+  imports: [MovieCardComponent, CommonModule],
   templateUrl: './discovery.component.html',
   styleUrl: './discovery.component.css',
 })
@@ -12,6 +13,8 @@ export class DiscoveryComponent implements OnInit {
   movies: any[] = [];
   currentPage: number = 1;
   totalPages: number = 500;
+  showAlert: boolean = false;
+  alertMessage: string = '';
   constructor(private movieService: MovieService) {}
   ngOnInit(): void {
     this.fetchMovies();
@@ -67,5 +70,13 @@ export class DiscoveryComponent implements OnInit {
 
   isFavorite(id: number): boolean {
     return this.movieService.favoriteMoviesIds.includes(id);
+  }
+  onFavoriteToggled(isFavorite: boolean): void {
+    this.alertMessage = isFavorite
+      ? 'Movie added to favorites 💗'
+      : 'Movie removed from favorites';
+    this.showAlert = true;
+
+    setTimeout(() => (this.showAlert = false), 3000);
   }
 }

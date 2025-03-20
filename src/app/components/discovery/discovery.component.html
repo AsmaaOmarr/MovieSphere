@@ -1,4 +1,19 @@
 <!-- search bar -->
+
+<div
+  *ngIf="showAlert"
+  class="alert alert-success alert-dismissible fade show position-fixed top-3 start-50 translate-middle-x shadow"
+  style="z-index: 1050; width: 30%; text-align: center"
+  role="alert"
+>
+  {{alertMessage}}
+  <button
+    type="button"
+    class="btn-close"
+    (click)="showAlert = false"
+    aria-label="Close"
+  ></button>
+</div>
 <div class="position-relative w-50 mx-auto mt-4">
   <input
     class="form-control rounded-5 ps-4"
@@ -16,6 +31,7 @@
   <app-movie-card
     [movie]="movie"
     [isFavorite]="isFavorite(movie.id)"
+    (favoriteToggled)="onFavoriteToggled($event)"
   ></app-movie-card>
   }
 </div>
