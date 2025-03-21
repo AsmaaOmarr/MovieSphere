@@ -19,6 +19,7 @@ export const routes: Routes = [
   {
     path: '',
     component: StartComponent,
+
     children: [
       { path: '', redirectTo: 'register', pathMatch: 'full' },
       { path: 'register', component: RegisterComponent },
@@ -30,7 +31,7 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     title: 'home',
-    canActivate:[authGuard],
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'discovery', pathMatch: 'full' },
       { path: 'discovery', component: DiscoveryComponent, title: 'discovery' },
@@ -66,6 +67,4 @@ export const routes: Routes = [
 
   { path: 'about', component: AboutPageComponent, title: 'About Us' },
   { path: '**', component: NotfoundComponent, title: 'Not Found' },
-
-
 ];

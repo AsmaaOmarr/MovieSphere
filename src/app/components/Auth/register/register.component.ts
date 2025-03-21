@@ -72,7 +72,6 @@ export class RegisterComponent {
       () => alert('Registration failed!')
     );
   }
-  
 
   toggleConfirmPassword() {
     this.showConfirmPassword = !this.showConfirmPassword;

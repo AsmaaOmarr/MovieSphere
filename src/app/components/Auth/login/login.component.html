@@ -1,62 +1,103 @@
 <!-- alert -->
 <div
-*ngIf="showAlert"
-class="alert alert-warning alert-dismissible fade show position-fixed top-3 start-50 translate-middle-x shadow"
-style="z-index: 1050; width: 80%; text-align: center"
-role="alert"
+  *ngIf="showAlert"
+  class="alert alert-warning alert-dismissible fade show position-fixed top-3 start-50 translate-middle-x shadow"
+  style="z-index: 1050; width: 80%; text-align: center"
+  role="alert"
 >
-<strong>⚠ Access Denied!</strong> You need to Login to view movies.
-<button
-  type="button"
-  class="btn-close"
-  (click)="showAlert = false"
-  aria-label="Close"
-></button>
+  <strong>⚠ Access Denied!</strong> You need to Login to view movies.
+  <button
+    type="button"
+    class="btn-close"
+    (click)="showAlert = false"
+    aria-label="Close"
+  ></button>
 </div>
 <!-- end of alert -->
 
 <div class="d-flex justify-content-center align-items-center vh-100">
-  <div class="card p-4   border-0 " style="width: 400px; border-radius: 12px; background-color: #221B2F; font-size: small;">
-<h5 class="text-center mb-4 text-light">Login</h5>
-      
-<form [formGroup]="loginFormValidation">
-  <!-- Full Name -->
-  <div class="mb-3">
-    <label class="form-label text-secondary">Full Name</label>
-    <input [(ngModel)]="user.username"  formControlName="name" type="text" class="form-control text-light border-0 rounded-4" placeholder="Enter your name">
-    <div *ngIf="name?.invalid && name?.touched" class="invalid-feedback d-block">
-      Name is required and must be more than 3 characters.
-    </div>
-  </div>
+  <div
+    class="card p-4 border-0"
+    style="
+      width: 400px;
+      border-radius: 12px;
+      background-color: #221b2f;
+      font-size: small;
+    "
+  >
+    <h5 class="text-center mb-4 text-light">Login</h5>
 
-  <!-- Password -->
-  <div class="mb-3 position-relative">
-    <label class="form-label text-secondary">Password</label>
-    <input [(ngModel)]="user.password"  formControlName="password"  [type]="showPassword ? 'text' : 'password'" class="form-control  border-0 rounded-4"
-      placeholder="Enter your password" #passwordInput>
-
-      <i [class]="showPassword ? 'bi bi-eye ':'bi bi-eye-slash'"
-      class="me-3 translate-middle-y text-light"
-      (click)="togglePassword()"
-      style="cursor: pointer; position: absolute; top: 48px; right: -5px;"></i>
-
-      <div *ngIf="password?.invalid && password?.touched" class="invalid-feedback d-block">
-        <div >Password must be at least 6 characters long.</div>
+    <form [formGroup]="loginFormValidation">
+      <!-- Full Name -->
+      <div class="mb-3">
+        <label class="form-label text-secondary">Full Name</label>
+        <input
+          [(ngModel)]="user.username"
+          formControlName="name"
+          type="text"
+          class="form-control text-light border-0 rounded-4"
+          placeholder="Enter your name"
+        />
+        <div
+          *ngIf="name?.invalid && name?.touched"
+          class="invalid-feedback d-block"
+        >
+          Name is required and must be more than 3 characters.
+        </div>
       </div>
-  </div>
 
-  
-  <div *ngIf="inValidUser" class="alert text-light mt-3 shadow-lg" style="background-color:#b1979d50;">
-    Invalid username or password. Please try again.
+      <!-- Password -->
+      <div class="mb-3 position-relative">
+        <label class="form-label text-secondary">Password</label>
+        <input
+          [(ngModel)]="user.password"
+          formControlName="password"
+          [type]="showPassword ? 'text' : 'password'"
+          class="form-control border-0 rounded-4"
+          placeholder="Enter your password"
+          #passwordInput
+        />
+
+        <i
+          [class]="showPassword ? 'bi bi-eye ' : 'bi bi-eye-slash'"
+          class="me-3 translate-middle-y text-light"
+          (click)="togglePassword()"
+          style="cursor: pointer; position: absolute; top: 48px; right: -5px"
+        ></i>
+
+        <div
+          *ngIf="password?.invalid && password?.touched"
+          class="invalid-feedback d-block"
+        >
+          <div>Password must be at least 6 characters long.</div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="inValidUser"
+        class="alert text-light mt-3 shadow-lg"
+        style="background-color: #b1979d50"
+      >
+        Invalid username or password. Please try again.
+      </div>
+      <!-- Register Button -->
+      <button
+        (click)="login()"
+        class="btn btn-lg w-100 text-white rounded-4"
+        style="background-color: #7a28a7; font-size: 15px"
+        [disabled]="loginFormValidation.invalid"
+      >
+        Login
+      </button>
+      <p class="text-center mt-3 text-light">
+        Don't have an account?
+        <a
+          routerLink="/register"
+          class="text-decoration-none fw-bold"
+          style="color: #a033ff"
+          >Register</a
+        >
+      </p>
+    </form>
   </div>
-  <!-- Register Button -->
-  <button (click)="login()" class="btn btn-lg w-100 text-white rounded-4" style="background-color: #7A28A7; font-size: 15px;" [disabled]="loginFormValidation.invalid">Login</button>
-  <p class="text-center mt-3 text-light">
-    Don't have an account? 
-    <a routerLink="/register" class="text-decoration-none fw-bold" style="color: #a033ff;">Register</a>
-  </p>
- 
-  
-</form>
-</div>
 </div>

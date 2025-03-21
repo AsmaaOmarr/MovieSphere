@@ -1,57 +1,11 @@
 {
   "users": [
     {
-      "id": "060c",
-      "username": "Hassan",
-      "email": "hzidan014@gmail.com",
-      "password": "123456",
-      "isSubscribed": false
-    },
-    {
-      "firstName": "Asmaa",
-      "lastName": "Omar",
+      "id": "9fb7",
       "username": "asmaa",
-      "phoneNumber": "01148123773",
-      "age": "25",
       "email": "omarasmaa241@gmail.com",
-      "gender": "female",
       "password": "asmaa123",
-      "isSubscribed": true,
-      "id": "6730"
-    },
-    {
-      "id": "517c",
-      "username": "Mohamed",
-      "email": "t.jemy25@gmail.com",
-      "password": "123456",
       "isSubscribed": false
-    },
-    {
-      "id": "1912",
-      "username": "mmmm",
-      "email": "mmm@gmail.com",
-      "password": "123456",
-      "isSubscribed": false
-    },
-    {
-      "id": "e1f7",
-      "username": "acbd",
-      "email": "abcd@gmail.com",
-      "password": "123456",
-      "isSubscribed": true
-    },
-    {
-      "firstName": "Arrrrwa",
-      "lastName": "Soliman",
-      "username": "arwa",
-      "phoneNumber": "01154366009",
-      "age": "22",
-      "email": "aymanarwa05@gmail.com",
-      "gender": "female",
-      "password": "123456",
-      "isSubscribed": false,
-      "profileImage": "",
-      "id": "284c"
     }
   ]
 }

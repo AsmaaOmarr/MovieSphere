@@ -18,7 +18,9 @@
       (click)="toggleFavorite($event, movie.id)"
     ></i>
     <img
-      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+      [src]="
+        imgPath + (movie.poster_path ? movie.poster_path : movie.backdrop_path)
+      "
       class="card-img-top rounded-4"
       alt="{{ movie.title }}"
     />
