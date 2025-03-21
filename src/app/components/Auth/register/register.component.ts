@@ -75,7 +75,6 @@ export class RegisterComponent {
       }
     );
   }
-  
 
   toggleConfirmPassword() {
     this.showConfirmPassword = !this.showConfirmPassword;

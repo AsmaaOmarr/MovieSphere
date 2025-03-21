@@ -15,6 +15,7 @@ export class DiscoveryComponent implements OnInit {
   totalPages: number = 500;
   showAlert: boolean = false;
   alertMessage: string = '';
+
   constructor(private movieService: MovieService) {}
   ngOnInit(): void {
     this.fetchMovies();
@@ -29,6 +30,7 @@ export class DiscoveryComponent implements OnInit {
             (id: number) => this.movieService.genreMap[id] || 'Unknown'
           ),
         }));
+        console.log(this.movies);
       },
       error: (err) => {
         console.log(err);

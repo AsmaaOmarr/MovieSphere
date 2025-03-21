@@ -6,11 +6,11 @@ import { APP_COLORS } from '../../../constants';
   selector: 'app-slider',
   imports: [CommonModule],
   templateUrl: './slider.component.html',
-  styleUrl: './slider.component.css'
+  styleUrl: './slider.component.css',
 })
-export class SliderComponent implements OnInit{
+export class SliderComponent implements OnInit {
   bgColor: string = APP_COLORS.secondaryDark;
   ngOnInit() {
-    console.log("Slider Loaded"); 
+    console.log('Slider Loaded');
   }
 }

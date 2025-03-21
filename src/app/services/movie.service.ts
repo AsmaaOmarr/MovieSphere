@@ -83,7 +83,6 @@ export class MovieService {
   }
   toggleFavorite(movieId: number): Observable<any> {
     const isFavorite = this.favoriteMoviesIds.includes(movieId);
-
     return this.http.post(
       `https://api.themoviedb.org/3/account/21849475/favorite?api_key=${this.apiKey}`,
       {

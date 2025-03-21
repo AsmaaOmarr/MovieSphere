@@ -12,20 +12,29 @@ import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule,FormsModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
+    FormsModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   encapsulation: ViewEncapsulation.None,
 })
-export class LoginComponent  implements OnInit{
+export class LoginComponent implements OnInit {
   showPassword = false;
   inValidUser = false;
   user = { username: '', password: '' };
   showAlert: boolean = false;
 
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  constructor(private authService: AuthService, private router: Router,private route: ActivatedRoute) {}
-  
   loginFormValidation = new FormGroup({
     name: new FormControl(null, [Validators.required, Validators.minLength(4)]),
     password: new FormControl(null, [
