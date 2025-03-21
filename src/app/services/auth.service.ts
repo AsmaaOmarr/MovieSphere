@@ -29,7 +29,7 @@ export class AuthService {
     return this.checkUsernameExists(user.username).pipe(
       map((usernameExists) => {
         if (usernameExists) {
-          throw new Error('Username is already taken');
+          throw new Error('Username is already taken. Please choose another one.');
         } else {
           return this.http.post(this.apiUrl, user);
         }
