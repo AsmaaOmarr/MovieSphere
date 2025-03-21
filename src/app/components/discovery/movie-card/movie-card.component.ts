@@ -25,7 +25,7 @@ export class MovieCardComponent {
     this.movieService.toggleFavorite(movieId).subscribe({
       next: (response) => {
         this.isFavorite = !this.isFavorite;
-        this.movieService.fetchMovies();
+        // this.movieService.fetchMovies();
         this.favoriteToggled.emit(this.isFavorite);
       },
       error: (err) => {
