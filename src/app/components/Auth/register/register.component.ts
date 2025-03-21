@@ -26,6 +26,7 @@ export class RegisterComponent {
   showConfirmPassword = false;
   showPassword = false;
   user = { username: '', email: '', password: '', isSubscribed: false };
+  errorMessage: string = '';  
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -69,7 +70,9 @@ export class RegisterComponent {
         localStorage.setItem('loggedInUser', JSON.stringify(createdUser));
         this.router.navigate(['/home']);
       },
-      () => alert('Registration failed!')
+      (error) => {
+        this.errorMessage = error.message;
+      }
     );
   }
   

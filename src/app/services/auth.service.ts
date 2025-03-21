@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +10,35 @@ export class AuthService {
   private apiUrl = 'http://localhost:5000/users';
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  checkUsernameExists(username: string): Observable<boolean> {
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      map((users) => {
+        // Check if any user has the same username
+        return users.some((user) => user.username === username);
+      }),
+      catchError((error) => {
+        console.error('Error checking username:', error);
+        return of(false); // Return false in case of an error (username not found)
+      })
+    );
+  }
+
+  // Register a new user
   register(user: any): Observable<any> {
-    return this.http.post(this.apiUrl, user);
+    return this.checkUsernameExists(user.username).pipe(
+      map((usernameExists) => {
+        if (usernameExists) {
+          throw new Error('Username is already taken. Please choose another one.');
+        } else {
+          return this.http.post(this.apiUrl, user);
+        }
+      }),
+      catchError((error) => {
+        console.error(error.message);
+        throw error;
+      })
+    );
   }
 
   login(username: string, password: string): Observable<any> {

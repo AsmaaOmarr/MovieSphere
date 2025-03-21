@@ -12,6 +12,8 @@
               <div *ngIf="name?.invalid && name?.touched" class="invalid-feedback d-block">
                 Name is required and must be more than 3 characters.
               </div>
+              <div *ngIf="errorMessage" class="invalid-feedback d-block">{{ errorMessage }}</div>
+          
             </div>
       
             <!-- Email Address -->
